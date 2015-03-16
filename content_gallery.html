@@ -1,12 +1,14 @@
 <script type="text/javascript">
+var $thisdiv = $('#content-gallery');
+	
 $(function(){
 	$('.close').click(function() {
 
-		$contentx.remove();
+		$thisdiv.remove();
 		return false;
 	});
 	
-	
+	$thisdiv.append($.cookie('homes')); 
 	
 });
 </script>
