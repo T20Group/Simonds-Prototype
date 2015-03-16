@@ -12,11 +12,17 @@ $(function(){
 	
 	$thisdiv.append($.cookie('homes')); 
 	
+	
+	$('.overlay').click(function() {
+		$('#overlay').append('oomg omg omg');
+		return false;
+	});
 });
 </script>
 
 <div id="content-gallery" style=" height: 300px; width: 300px; background: pink;">
 Called out the cookie cutter<br/>
 <a href="#" class="close">close</a>
+<a href="#" class="overlay">change overlay</a>
 
 </div>
