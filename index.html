@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Simonds Prototype</title>
+<meta name = "viewport" content ="width=device-width, minimum-scale=1, maximum-scale=1">
+
+<!-- META -->
+<meta charset = "utf-8">
+
+<!-- CSS -->
+<link rel = "stylesheet" href = "css/reset.css" />
+<link rel = "stylesheet" href = "css/styles.css" />
+
+<!-- JS -->
+<script src = "js/jquery-1.8.2.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+	
+<script type="text/javascript">
+$(function() {
+	
+	// LAYER VARiABLES
+	var $overlay = $('#overlay');
+	var $content = $('#content');
+	var $contentx = $('#content-gallery');
+	
+	
+	
+	$('.link').click(function() {
+		var t = $(this).attr('href');
+		$content.load(t);
+		
+		return false; 
+	});
+	
+	$('.cookie').click(function() {
+		var n = $(this).text();
+		var t = $(this).attr('href');
+		$.cookie('homes', n);
+		$content.load(t);
+		//alert(t);
+		return false;
+	});
+	
+	$('.delcookie').click(function() {
+		$.removeCookie('homes', { path: '/' });
+		return false;
+	})
+	
+});
+</script>
+
+</head>
+
+<body>
+
+<div id="overlay">
+    <!-- 
+	Overlay contents ONLY
+	Contents with single CLOSE functionality that's all 
+	
+	CONTENTS
+	- show tutorial page
+	- show share page
+	
+	-->
+    overlay layer
+</div> <!-- /overlay -->
+
+<div id="navigation">
+    <!-- 
+	Navigation layer, Interface layer
+	Controls overall page navigation and Content DIV
+	
+	All controls here
+
+	- Navigational control
+	- Favorite control
+	- Promo control
+	- Floorplan control
+	- Live mini floorplan
+	- Gallery Control
+	-->
+    nav
+    
+    <div id="main-control">
+	    <a href="content_gallery.html" class="link">Open div href</a><br/>
+	    <a href="content_cookie.html" class="cookie">Ginger bread house 123</a><br/>
+	    <a href="content_cookie.html" class="cookie">Ginger bread house 16</a><br/>
+	    <a href="content_cookie.html" class="cookie">Ginger bread house man</a><br/>
+	    <a href="#" class="delcookie">Delete cookie</a><br/>
+    </div> <!-- /main-control -->
+</div> <!-- /navigation -->
+
+<div id="content">
+	<!--
+	Shows only content, NO navigational, NO triggers here.
+	
+	- show floorplans, show floorplan options
+	- show gallery images
+	- show homes images
+	- show promo video/poster
+	- show favorite
+	
+	
+	-->
+	content layer
+</div> <!-- /content -->
+			
+</body>
+
+</html>

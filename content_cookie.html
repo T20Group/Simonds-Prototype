@@ -1,0 +1,22 @@
+
+<script type="text/javascript">
+
+var $thisdiv = $('#content-gallery');
+	
+$(function(){
+	$('.close').click(function() {
+
+		$thisdiv.remove();
+		return false;
+	});
+	
+	$thisdiv.append($.cookie('homes')); 
+	
+});
+</script>
+
+<div id="content-gallery" style=" height: 300px; width: 300px; background: pink;">
+Called out the cookie cutter<br/>
+<a href="#" class="close">close</a>
+
+</div>
