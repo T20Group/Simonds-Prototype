@@ -37,11 +37,11 @@ $(function() {
 	
 	
 	$('.cookie').click(function() {
-		var n = $(this).text();
+		var val = $(this).text();
 		var t = $(this).attr('href');
 		
 		// find location of DL using watchdog
-		$.cookie('homes', n);
+		$.cookie('homes', val, { expires: 1, path: '127.0.0.1:8080/repo/e9d805fa771f047f60fedcd96a2947d4930bdb6b/' });
 		$content.load(t);
 		//alert(t);
 		return false;
@@ -49,7 +49,7 @@ $(function() {
 	
 	$('.delcookie').click(function() {
 		// issues deleting cookie on DL 
-		$.removeCookie('homes', { path: '/' });
+		$.removeCookie('homes', { path: '127.0.0.1:8080/repo/e9d805fa771f047f60fedcd96a2947d4930bdb6b/' });
 		return false;
 	})
 	
@@ -88,10 +88,8 @@ $(function() {
 	$target.on('click', '.homes', function(e) {
 		var t = $(this).attr('id');
 		alert(t);
-		
 		// insert function 
-		
-	})
+	});
 	
 });
 </script>
