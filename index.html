@@ -52,9 +52,11 @@ $(function() {
 	
 	
 	// GET JSON file
-	$.getJSON('homes.json', function(data) {
-		console.log(data);
-	});
+	$.getJSON("homes.json", function(data) {
+		console.log(data.homes.length);
+	}).error(function(xhr) {
+        alert(xhr.responseText)
+    });
 	
 });
 </script>
