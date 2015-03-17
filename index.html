@@ -24,7 +24,6 @@ $(function() {
 	// LAYER VARiABLES
 	var $overlay = $('#overlay');
 	var $content = $('#content');
-	var $contentx = $('#content-gallery');
 	
 	
 	
@@ -41,15 +40,17 @@ $(function() {
 		var t = $(this).attr('href');
 		
 		// find location of DL using watchdog
-		$.cookie('homes', val, { expires: 1, path: '/127.0.0.1:8080/repo/e9d805fa771f047f60fedcd96a2947d4930bdb6b/' });
+		$.cookie('homes', val);
 		$content.load(t);
 		//alert(t);
 		return false;
 	});
 	
+	// 	/127.0.0.1:8080/repo/e9d805fa771f047f60fedcd96a2947d4930bdb6b/
+	
 	$('.delcookie').click(function() {
 		// issues deleting cookie on DL 
-		$.removeCookie('homes', { path: '/127.0.0.1:8080/repo/e9d805fa771f047f60fedcd96a2947d4930bdb6b/' });
+		$.removeCookie('homes', { path: '/' });
 		return false;
 	})
 	
@@ -77,7 +78,11 @@ $(function() {
 					
 			var $id = val.id;
 			var $name = val.name;
-			var homes = '<div id="homes'+$id+'" class="homes"><div class="homesImg">'+$id+'</div><div class="homesTitle">'+$name+'</div></div>';
+			var $storey = val.floorplan[0].storey;
+			var $bed = val.floorplan[0].bed;
+			var $bath = val.floorplan[0].bath;
+			var $car = val.floorplan[0].car;
+			var homes = '<div id="homes'+$id+'" class="homes" data-storey="'+$storey+'"><div class="homesImg">id: '+$id+' storey: '+$storey+' bed: '+ $bed +' bath: '+$bath+' car: '+$car+'</div><div class="homesTitle">'+$name+'</div></div>';
 			
 			$target.append(homes);
 			
@@ -91,6 +96,23 @@ $(function() {
 		// insert function 
 	});
 	
+	$('.storey').on('click', function(e) {
+		
+		var val = $(this).attr('data-storey');
+		
+		$('.homes').addClass('hidden');
+		$('.homes').filter(function() {
+			
+			var t = $(this).attr('data-storey');
+			if (val==t) {
+				$(this).removeClass('hidden');	
+			}
+			
+		});
+		
+		return false;
+	});
+
 });
 </script>
 
@@ -133,6 +155,11 @@ $(function() {
 	    <a href="content_cookie.html" class="cookie">16</a><br/>
 	    <a href="content_cookie.html" class="cookie">23</a><br/>
 	    <a href="#" class="delcookie">Delete cookie</a><br/>
+	    
+	    <br/>
+	    <br/>
+	    
+	    <a href="#" class="storey" data-storey="1">Single</a> | <a href="#" class="storey" data-storey="2">Double</a>
     </div> <!-- /main-control -->
 </div> <!-- /navigation -->
 

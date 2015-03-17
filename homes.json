@@ -7,7 +7,7 @@
 	       {
 		    "id": "1",
 		    "storey": "2",
-			"bed": "3",
+			"bed": "2",
 			"bath": "2",
 			"car":"1",
 			"height":"10",
@@ -38,10 +38,10 @@
        "floorplan": [
 	       {
 		    "id": "5",
-		    "storey": "2",
-			"bed": "4",
-			"bath": "3",
-			"car":"3",
+		    "storey": "1",
+			"bed": "2",
+			"bath": "2",
+			"car":"1",
 			"height":"12",
 			"width":"16",
 			"sq": "16"
@@ -55,9 +55,9 @@
 	       {
 		    "id": "5",
 		    "storey": "2",
-			"bed": "4",
-			"bath": "3",
-			"car":"3",
+			"bed": "3",
+			"bath": "2",
+			"car":"1",
 			"height":"12",
 			"width":"16",
 			"sq": "16"
@@ -71,9 +71,9 @@
 	       {
 		    "id": "5",
 		    "storey": "2",
-			"bed": "4",
-			"bath": "3",
-			"car":"3",
+			"bed": "3",
+			"bath": "2",
+			"car":"2",
 			"height":"12",
 			"width":"16",
 			"sq": "16"
@@ -88,7 +88,7 @@
 		    "id": "5",
 		    "storey": "2",
 			"bed": "4",
-			"bath": "3",
+			"bath": "2",
 			"car":"3",
 			"height":"12",
 			"width":"16",
@@ -102,10 +102,10 @@
        "floorplan": [
 	       {
 		    "id": "5",
-		    "storey": "2",
-			"bed": "4",
+		    "storey": "1",
+			"bed": "5",
 			"bath": "3",
-			"car":"3",
+			"car":"4",
 			"height":"12",
 			"width":"16",
 			"sq": "16"
