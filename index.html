@@ -41,7 +41,7 @@ $(function() {
 		var t = $(this).attr('href');
 		
 		// find location of DL using watchdog
-		$.cookie('homes', val, { expires: 1, path: '127.0.0.1:8080/repo/e9d805fa771f047f60fedcd96a2947d4930bdb6b/' });
+		$.cookie('homes', val, { expires: 1, path: '/127.0.0.1:8080/repo/e9d805fa771f047f60fedcd96a2947d4930bdb6b/' });
 		$content.load(t);
 		//alert(t);
 		return false;
@@ -49,7 +49,7 @@ $(function() {
 	
 	$('.delcookie').click(function() {
 		// issues deleting cookie on DL 
-		$.removeCookie('homes', { path: '127.0.0.1:8080/repo/e9d805fa771f047f60fedcd96a2947d4930bdb6b/' });
+		$.removeCookie('homes', { path: '/127.0.0.1:8080/repo/e9d805fa771f047f60fedcd96a2947d4930bdb6b/' });
 		return false;
 	})
 	
@@ -160,7 +160,8 @@ $(function() {
 	- MAY contain relative navigation
 	
 	-->
-	content layer
+	content layer <br/>
+	verson: cookie
 </div> <!-- /content -->
 			
 </body>
