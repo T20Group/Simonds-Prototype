@@ -56,10 +56,42 @@ $(function() {
 	
 	// GET JSON file
 	$.getJSON("homes.json", function(data) {		
-		console.log(data.homes[1].floorplan.length);
+//		console.log(data.homes[1].floorplan.length);
 	}).error(function(xhr) {
-        alert(xhr.responseText)
+        alert(xhr.responseText);
     });
+    
+    
+    /*
+	    
+	    
+	*/
+    
+    // GENERATE HOMES
+    
+    var $target = $('#homesHolder');
+    
+    $.getJSON("homes.json", function(data) {		
+		$.each(data.homes, function(name, val) {
+			// append dynamic homes
+					
+			var $id = val.id;
+			var $name = val.name;
+			var homes = '<div id="homes'+$id+'" class="homes"><div class="homesImg">'+$id+'</div><div class="homesTitle">'+$name+'</div></div>';
+			
+			$target.append(homes);
+			
+		});
+	});
+	
+	// binds dynamically generated .homes filter within $target to 
+	$target.on('click', '.homes', function(e) {
+		var t = $(this).attr('id');
+		alert(t);
+		
+		// insert function 
+		
+	})
 	
 });
 </script>
@@ -99,14 +131,25 @@ $(function() {
     
     <div id="main-control">
 	    <a href="content_gallery.html" class="link">Open div href</a><br/>
-	    <a href="content_cookie.html" class="cookie">Ginger bread house 123</a><br/>
-	    <a href="content_cookie.html" class="cookie">Ginger bread house 16</a><br/>
-	    <a href="content_cookie.html" class="cookie">Ginger bread house man</a><br/>
+	    <a href="content_cookie.html" class="cookie">7</a><br/>
+	    <a href="content_cookie.html" class="cookie">16</a><br/>
+	    <a href="content_cookie.html" class="cookie">23</a><br/>
 	    <a href="#" class="delcookie">Delete cookie</a><br/>
     </div> <!-- /main-control -->
 </div> <!-- /navigation -->
 
 <div id="content">
+		<div id="homesHolder"> <!-- MOVE this whole DIV to reposition layers including the "cleared" DIV-->
+		<!--
+			<div id="homes01" class="homes">
+				<div class="homesImg">img here</div>
+				<div class="homesTitle">Title here</div>
+			</div>
+		-->
+		</div> <!-- /homesHolder-->
+		<div class="cleared"></div>
+		
+		
 	<!--
 	Shows only content, NO navigational, NO triggers here.
 	
