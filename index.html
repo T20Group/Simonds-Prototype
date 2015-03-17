@@ -35,10 +35,13 @@ $(function() {
 		return false; 
 	});
 	
+	
 	$('.cookie').click(function() {
 		var n = $(this).text();
 		var t = $(this).attr('href');
-		$.cookie('homes', n, { expires: 7, path: '/' });
+		
+		// find location of DL using watchdog
+		$.cookie('homes', n);
 		$content.load(t);
 		//alert(t);
 		return false;
@@ -52,8 +55,8 @@ $(function() {
 	
 	
 	// GET JSON file
-	$.getJSON("homes.json", function(data) {
-		console.log(data.homes.length);
+	$.getJSON("homes.json", function(data) {		
+		console.log(data.homes[1].floorplan.length);
 	}).error(function(xhr) {
         alert(xhr.responseText)
     });
