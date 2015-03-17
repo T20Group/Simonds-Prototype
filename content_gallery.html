@@ -10,11 +10,16 @@ $(function(){
 	
 	$thisdiv.append($.cookie('homes')); 
 	
+	$('.overlay').click(function() {
+		$('#overlay').text('clear overlay');
+		return false;
+	});
+	
 });
 </script>
 
 <div id="content-gallery" style=" height: 300px; width: 300px; background: pink;">
 this layer is called and placed in and has a functionality to close this div<br/>
 <a href="#" class="close" data-function="close-parent">close</a>
-
+<a href="#" class="overlay">change overlay</a>
 </div>
