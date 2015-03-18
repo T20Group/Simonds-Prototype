@@ -1,0 +1,19 @@
+<script type="text/javascript">
+var $thisdiv = $('#overlay-floorplan-container');
+	
+$(function(){
+	$('.close').tapstart(function() {
+
+		$thisdiv.remove();
+		return false;
+	});
+	
+	// grab current view location through cookie
+	
+});
+</script>
+
+<div id="overlay-floorplan-container">
+<img id="floorplan-image" src="images/floorplan/astoria_plan_big.jpg" height="1080" />
+<a href="#" class="close" style="position: absolute; font-size: 40px; top: 50%; left: 50%;">close</a>
+</div>

@@ -10,11 +10,16 @@
 
 <!-- CSS -->
 <link rel = "stylesheet" href = "css/reset.css" />
+<link rel = "stylesheet" href = "css/slide-default.css" />
+<link rel = "stylesheet" media = "screen" href = "css/slide-common.css" />
 <link rel = "stylesheet" href = "css/styles.css" />
 
 <!-- JS -->
 <script src = "js/jquery-1.8.2.min.js"></script>
-<script src="js/jquery.cookie.js"></script>
+<script src = "js/jquery.easing-1.3.js"></script>
+<script src = "js/jquery.cookie.js"></script>
+<script src = "js/jquery.mobile-events.min.js"></script>
+<script src = "js/jquery.iosslider.js"></script>
 
 <script src="js/script.js"></script>
 	
@@ -27,17 +32,16 @@ $(function() {
 	
 	
 	
-	$('.link').click(function() {
-		var t = $(this).attr('href');
+	$('.link').tapstart(function(e, touch) {
+		var t = $(this).attr('data-view');
 		$content.load(t);
-		
 		return false; 
 	});
 	
 	
-	$('.cookie').click(function() {
+	$('.cookie').tapstart(function(e, touch) {
 		var val = $(this).text();
-		var t = $(this).attr('href');
+		var t = $(this).attr('data-view');
 		
 		// find location of DL using watchdog
 		$.cookie('homes', val);
@@ -70,19 +74,19 @@ $(function() {
     
     // GENERATE HOMES
     
-    var $target = $('#homesHolder');
+    var $target = $('#homes-filter-container');
     
     $.getJSON("homes.json", function(data) {		
 		$.each(data.homes, function(name, val) {
 			// append dynamic homes
 					
-			var $id = val.id;
-			var $name = val.name;
-			var $storey = val.floorplan[0].storey;
-			var $bed = val.floorplan[0].bed;
-			var $bath = val.floorplan[0].bath;
-			var $car = val.floorplan[0].car;
-			var homes = '<div id="homes'+$id+'" class="homes" data-storey="'+$storey+'"><div class="homesImg">id: '+$id+' storey: '+$storey+' bed: '+ $bed +' bath: '+$bath+' car: '+$car+'</div><div class="homesTitle">'+$name+'</div></div>';
+			var id = val.id;
+			var name = val.name;
+			var storey = val.floorplan[0].storey;
+			var bed = val.floorplan[0].bed;
+			var bath = val.floorplan[0].bath;
+			var car = val.floorplan[0].car;
+			var homes = '<div id="homes'+id+'" class="homes" data-storey="'+storey+'" data-id="'+id+'"><div class="homesImg"><img src="images/homes/'+id+'.jpg" />id: '+id+' storey: '+storey+' bed: '+ bed +' bath: '+bath+' car: '+car+'</div><div class="homesTitle">'+name+'</div></div>';
 			
 			$target.append(homes);
 			
@@ -90,13 +94,19 @@ $(function() {
 	});
 	
 	// binds dynamically generated .homes filter within $target to 
-	$target.on('click', '.homes', function(e) {
-		var t = $(this).attr('id');
-		alert(t);
-		// insert function 
+	$target.on('tapstart', '.homes', function(e) {
+		
+		// store cookie
+		var val = $(this).attr('data-id');
+		$.cookie('homes', val);
+		
+		// update content DIV
+		$content.load('content_homes.html');
+		
+
 	});
 	
-	$('.storey').on('click', function(e) {
+	$('.storey').on('tapstart', function(e) {
 		
 		var val = $(this).attr('data-storey');
 		
@@ -112,7 +122,7 @@ $(function() {
 		
 		return false;
 	});
-
+	
 });
 </script>
 
@@ -120,7 +130,12 @@ $(function() {
 
 <body>
 
-<div id="overlay">
+<div id="main-container">
+
+<div id="overlay" class="container">
+	
+
+	
     <!-- 
 	Overlay contents ONLY
 	Contents with single CLOSE functionality that's all 
@@ -130,10 +145,10 @@ $(function() {
 	- show share page
 	
 	-->
-    overlay layer
+    overlay layer    
 </div> <!-- /overlay -->
 
-<div id="navigation">
+<div id="navigation" class="container">
     <!-- 
 	Navigation layer, Interface layer
 	Controls overall page navigation and Content DIV
@@ -150,10 +165,10 @@ $(function() {
     nav
     
     <div id="main-control">
-	    <a href="content_gallery.html" class="link">Open div href</a><br/>
-	    <a href="content_cookie.html" class="cookie">7</a><br/>
-	    <a href="content_cookie.html" class="cookie">16</a><br/>
-	    <a href="content_cookie.html" class="cookie">23</a><br/>
+	    <a data-view="content_gallery.html" href="#" class="link">Open div href</a><br/>
+	    <a data-view="content_cookie.html" href="#" class="cookie">7</a><br/>
+	    <a data-view="content_cookie.html" href="#" class="cookie">16</a><br/>
+	    <a data-view="content_cookie.html" href="#" class="cookie">23</a><br/>
 	    <a href="#" class="delcookie">Delete cookie</a><br/>
 	    
 	    <br/>
@@ -161,20 +176,22 @@ $(function() {
 	    
 	    <a href="#" class="storey" data-storey="1">Single</a> | <a href="#" class="storey" data-storey="2">Double</a>
     </div> <!-- /main-control -->
-</div> <!-- /navigation -->
-
-<div id="content">
-		<div id="homesHolder"> <!-- MOVE this whole DIV to reposition layers including the "cleared" DIV-->
+    
+    <div id="homes-filter-container"> <!-- MOVE this whole DIV to reposition layers including the "cleared" DIV-->
 		<!--
 			<div id="homes01" class="homes">
 				<div class="homesImg">img here</div>
 				<div class="homesTitle">Title here</div>
 			</div>
 		-->
-		</div> <!-- /homesHolder-->
-		<div class="cleared"></div>
-		
-		
+	</div> <!-- /homesHolder-->
+	<div class="cleared"></div>
+	
+	
+</div> <!-- /navigation -->
+
+<div id="content" class="container">
+
 	<!--
 	Shows only content, NO navigational, NO triggers here.
 	
@@ -190,7 +207,9 @@ $(function() {
 	content layer <br/>
 	verson: cookie
 </div> <!-- /content -->
-			
+		
+</div> <!-- /main-container -->		
+	
 </body>
 
 </html>

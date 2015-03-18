@@ -1,0 +1,92 @@
+<script type="text/javascript">
+$(function(){
+	
+// get cookie
+var selectedHome = $.cookie('homes');
+
+// target objects
+var $hid = $('#home-id');
+var $hname = $('#home-name');
+var $fp = $('#floorplan-count');
+var $target_overlay = $('#overlay');
+
+// place image
+$('#home-image').attr('src', 'images/homes/'+selectedHome+'.jpg');
+
+// get details
+$.getJSON("homes.json", function(data) {				
+	$.each(data.homes, function(name, val) {
+		if(val.id == selectedHome) { // search for id
+			$hid.text(val.id);
+			$hname.text(val.name);
+			$fp.text(val.floorplan.length);
+		}
+	});	
+});
+
+$('#floorplan-show').tapstart(function(e, touch) {
+	$target_overlay.load('overlay_floorplan.html');
+});
+
+
+$('.iosSlider').iosSlider({
+	autoSlide:true,
+	autoSlideTimer:10000,
+	autoSlideTransTimer:3000,
+	snapToChildren: true,
+	desktopClickDrag: true,
+	infiniteSlider: true,
+	snapSlideCenter: true,
+	//onSlideChange: slideChange,
+	elasticPullResistance:0.3,
+	frictionCoefficient:0.3,
+	snapFrictionCoefficient:0.95,
+	elasticFrictionCoefficient:0.8
+});
+	
+
+function slideChange(args) {
+
+}
+	
+});
+</script>	
+	
+<div id="floorplan-container" style="position: absolute; right: 50px; bottom: 50px; height: 300px; width: 300px; background: rgba(255, 255, 255, 0.5); padding: 20px; z-index: 1000;">
+	floating floorplan<br/>
+	<img id="floorplan-show" class="button" src="images/floorplan/astoria_plan.gif" alt="astoria_plan" width="300" /><br/>
+	<span id="home-id"></span>
+	<span id="home-name"></span>
+	<span id="floorplan-count"></span>
+</div>
+
+<!-- Home image + gallery images -->
+<div class = 'responsiveHeight'>
+<div class = 'inner'>
+<div class = 'iosSlider'>
+    <div class = 'slider' style="width: 1920px; height: 1080px;">
+        <div class = 'item item1'>
+            <img id="home-image" src="images/homes/homes.jpg" height="1080" />
+        </div>
+        <div class = 'item item1'>
+            <img src = 'images/gallery/gallery_1.jpg' />
+        </div>
+        <div class = 'item item2'>
+            <img src = 'images/gallery/gallery_2.jpg' />
+        </div>
+        <div class = 'item item3'>
+            <img src = 'images/gallery/gallery_3.jpg' />
+        </div>
+        <div class = 'item item3'>
+            <img src = 'images/gallery/gallery_4.jpg' />
+        </div>
+        <div class = 'item item3'>
+            <img src = 'images/gallery/gallery_5.jpg' />
+        </div>
+        <div class = 'item item3'>
+            <img src = 'images/gallery/gallery_6.jpg' />
+        </div>
+    </div>
+</div>
+</div>
+</div>

@@ -15,7 +15,7 @@ var $fp = $('#floorplan-count');
 
 	
 $(function(){
-	$('.close').click(function() {
+	$('.close').tapstart(function() {
 
 		$thisdiv.remove();
 		return false;
@@ -24,7 +24,7 @@ $(function(){
 	$thisdiv.append($.cookie('homes')); 
 	
 	
-	$('.overlay').click(function() {
+	$('.overlay').tapstart(function() {
 		$('#overlay').append('oomg omg omg');
 		return false;
 	});
