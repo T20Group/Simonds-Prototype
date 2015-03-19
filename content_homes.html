@@ -77,10 +77,20 @@ function slideChange(args) {
 	75%  { margin-top: 5px; }
 	100% { margin-top: 10px; }
 	}
+	
+#floorplan-container { -moz-animation: hoverplan 3s infinite; }
+
+@-moz-keyframes hoverplan {
+	0%   { margin-bottom: 10px; }
+	25%  { margin-bottom: 15px; margin-left: 3px; }
+	50%  { margin-bottom: 10px; }
+	75%  { margin-bottom: 15px; margin-right: 3px; }
+	100% { margin-bottom: 10px; }
+	}
 
 </style>
 	
-<div id="floorplan-container" style="position: absolute; right: 50px; bottom: 50px; background: rgba(0, 0, 0, 0.5); padding: 20px; z-index: 1000;">
+<div id="floorplan-container" style="position: absolute; right: 50px; bottom: 50px; background: rgba(0, 0, 0, 0.0); padding: 20px; z-index: 1000;">
 	
 	<img id="floorplan-show" class="button" src="images/floorplan/3d_plan.png" width="400" />
     <div id="map-marker" style="left: 175px; position: absolute; top: 70px;"><img src="images/floorplan/map-marker-red.png" height="50" /></div>
