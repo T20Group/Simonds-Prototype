@@ -118,7 +118,8 @@ $(function() {
 			var bed = val.floorplan[0].bed;
 			var bath = val.floorplan[0].bath;
 			var car = val.floorplan[0].car;
-			var homes = '<div id="homes'+id+'" class="homes" data-storey="'+storey+'" data-id="'+id+'"><div class="homesImg"><img src="images/homes/'+id+'.jpg" />id: '+id+' storey: '+storey+' bed: '+ bed +' bath: '+bath+' car: '+car+'</div><div class="homesTitle">'+name+'</div></div>';
+			var width = val.floorplan[0].width;
+			var homes = '<div id="homes'+id+'" class="homes" data-storey="'+storey+'" data-width="'+width+'" data-id="'+id+'"><div class="homesImg"><img src="images/homes/'+id+'.jpg" />width: '+width+' Bed: '+ bed +' bath: '+bath+' car: '+car+'</div><div class="homesTitle">'+name+'</div></div>';
 			
 			$target.append(homes);
 			
@@ -278,6 +279,7 @@ $(function() {
 	var widths = [8.5, 10, 12.5, 14, 15.2, 16];
 	var currWidth = 2;
 	
+	
 	$('#b_widthDown').tapstart(function(e, touch) {
 		if (currWidth > 0) {
 			currWidth -= 1;
@@ -298,7 +300,20 @@ $(function() {
 		}
 	});
 	
+	var increment_val = 0.5;
+	
 	$('#b_widthUp').tapstart(function(e, touch) {
+		
+		// get current width
+		var $currWidth = parseFloat($('.middletext').attr('data-currwidth'));
+		// add new increment
+		var newVal = ($currWidth+increment_val).toFixed(2);
+		// replace current value
+		$('.middletext').attr('data-currwidth', newVal);
+		
+		
+		alert(($currWidth+1).toFixed(2));
+		
 		if (currWidth+1 != widths.length) {
 			currWidth += 1;
 			$('.btn_right .middletext').text(widths[currWidth]+'m');
@@ -318,6 +333,25 @@ $(function() {
 		}
 	});
 	
+	$('#b_widthUpx').tapstart(function(e, touch) {
+		if (currWidth+1 != widths.length) {
+			currWidth += 1;
+			$('.btn_right .middletext').text(widths[currWidth]+'m');
+			
+			var animationClass = 'pulse2';
+			$('.btn_right .middletext').bind('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function (e) {
+				$(this).removeClass(animationClass);
+			});
+			$('.btn_right .middletext').addClass(animationClass);
+			
+			$('.btn_right #b_widthUp').bind('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function (e) {
+				$(this).removeClass(animationClass);
+			});
+			$('.btn_right #b_widthUp').addClass(animationClass);
+			
+			show_result();
+		}
+	});
 })
 </script>
 
@@ -352,7 +386,7 @@ $(function() {
         	<div class="half-circle"></div>
         	<div class="heading">lot width</div>
         	<div class="leftarrow"><a id="b_widthDown" href="#"><span class="glyphicon">&#57465;</span></a></div>
-            <div class="middletext">12.5m</div>
+            <div class="middletext" data-currwidth="8.5">12.5m</div>
             <div class="rightarrow"><a id="b_widthUp" href="#"><span class="glyphicon">&#57472;</span></a></div>
             <div class="clear"></div>
         </div>
