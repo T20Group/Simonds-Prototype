@@ -66,62 +66,6 @@ $(function() {
         alert(xhr.responseText);
     });
     
-    
-    /*
-	    
-	    
-	*/
-    
-    // GENERATE HOMES
-    
-    var $target = $('#homes-filter-container');
-    
-    $.getJSON("homes.json", function(data) {		
-		$.each(data.homes, function(name, val) {
-			// append dynamic homes
-					
-			var id = val.id;
-			var name = val.name;
-			var storey = val.floorplan[0].storey;
-			var bed = val.floorplan[0].bed;
-			var bath = val.floorplan[0].bath;
-			var car = val.floorplan[0].car;
-			var homes = '<div id="homes'+id+'" class="homes" data-storey="'+storey+'" data-id="'+id+'"><div class="homesImg"><img src="images/homes/'+id+'.jpg" />id: '+id+' storey: '+storey+' bed: '+ bed +' bath: '+bath+' car: '+car+'</div><div class="homesTitle">'+name+'</div></div>';
-			
-			$target.append(homes);
-			
-		});
-	});
-	
-	// binds dynamically generated .homes filter within $target to 
-	$target.on('tapstart', '.homes', function(e) {
-		
-		// store cookie
-		var val = $(this).attr('data-id');
-		$.cookie('homes', val);
-		
-		// update content DIV
-		$content.load('content_homes.html');
-		
-
-	});
-	
-	$('.storey').on('tapstart', function(e) {
-		
-		var val = $(this).attr('data-storey');
-		
-		$('.homes').addClass('hidden');
-		$('.homes').filter(function() {
-			
-			var t = $(this).attr('data-storey');
-			if (val==t) {
-				$(this).removeClass('hidden');	
-			}
-			
-		});
-		
-		return false;
-	});
 	
 });
 </script>
@@ -165,30 +109,15 @@ $(function() {
     nav
     
     <div id="main-control">
-<!--
-	    <a data-view="content_gallery.html" href="#" class="link">Open div href</a><br/>
-	    <a data-view="content_cookie.html" href="#" class="cookie">7</a><br/>
-	    <a data-view="content_cookie.html" href="#" class="cookie">16</a><br/>
-	    <a data-view="content_cookie.html" href="#" class="cookie">23</a><br/>
-	    <a href="#" class="delcookie">Delete cookie</a><br/>
--->
+
 	    
-	    <br/>
-	    <br/>
+	<div id="finder-div"></div>
+	<script>
+		$( "#finder-div" ).load( "includes/home-finder.html" );
+	</script>    
 	    
-	    <a href="#" class="storey" data-storey="1">Single</a> | <a href="#" class="storey" data-storey="2">Double</a>
     </div> <!-- /main-control -->
-    
-    <div id="homes-filter-container"> <!-- MOVE this whole DIV to reposition layers including the "cleared" DIV-->
-		<!--
-			<div id="homes01" class="homes">
-				<div class="homesImg">img here</div>
-				<div class="homesTitle">Title here</div>
-			</div>
-		-->
-	</div> <!-- /homesHolder-->
-	<div class="cleared"></div>
-	
+    	
 	
 </div> <!-- /navigation -->
 
