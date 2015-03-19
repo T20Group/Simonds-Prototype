@@ -43,7 +43,7 @@ html, body {
 	#main-control { width: 0; height: 40px; position: absolute; left: 900px; top: 1050px; background: purple; text-align: center; }
 	
 	/* HOMES */
-	#homes-filter-container { position: absolute; bottom: 0px; left: -900px; width: 1920px; padding: 0px; text-align: center; opacity: 0; }
+	#homes-filter-container { position: absolute; bottom: -1000px; left: -900px; width: 1920px; padding: 0px; text-align: center; opacity: 0; }
 	.homes {  padding: 10px; background: #e3e3e3; display: inline-table; }
 	.homes:hover { cursor: pointer; }
 		.homesImg { width: 200px; height: 80px; background: #fff; display: block; }

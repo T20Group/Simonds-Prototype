@@ -79,6 +79,7 @@
 }
 .finder-result { opacity: 0; position: absolute; z-index: 10; width: 100%; text-align: center; bottom: 300px; display:none; }
 .easing { transition: all .5s cubic-bezier(.5, 1.8, 1, 1.5); }
+.easingB { transition: all .3s cubic-bezier(0, 0, 1, 1); }
 .opac { opacity: 1 !important; bottom: 320px !important; }
 .btn_right_ani { opacity: 1; left: 230px; }
 .btn_left_ani { opacity: 1; right: 100px; }
@@ -92,6 +93,10 @@
 	100% { color:white;}
 }
 .pulse2 { animation: pulse2 .5s ease-in-out; }
+
+
+.background-overlay { background-color: rgba(0,0,0,0.5); height: 1080px; width: 1920px; position: absolute; top:-1050px; left:-900px; }
+
 </style>
 
 <script type="text/javascript">
@@ -133,6 +138,7 @@ $(function() {
 		
 		
 		// minimize finder
+		$('#menu-overlay').removeClass('background-overlay');
 		$('#homes-filter-container').removeClass('opac');
 		$('#btn_right').removeClass('btn_right_ani');
 		$('#btn_left').removeClass('btn_left_ani');
@@ -206,12 +212,14 @@ $(function() {
 	$('#btn_finder').tapstart(function(e, touch) {
 		$.cookie('has_run','true');
 		if (menuOpen) {
+			$('#menu-overlay').removeClass('background-overlay');
 			$('#homes-filter-container').removeClass('opac');
 			$('#btn_right').removeClass('btn_right_ani');
 			$('#btn_left').removeClass('btn_left_ani');
 			$('.hud').removeClass('hidden');
 			menuOpen = false;
 		} else {
+			$('#menu-overlay').addClass('background-overlay');
 			$('#homes-filter-container').addClass('opac');
 			$('#btn_right').addClass('btn_right_ani');
 			$('#btn_left').addClass('btn_left_ani');
@@ -313,7 +321,9 @@ $(function() {
 })
 </script>
 
-<div id="homes-filter-container" class="easing"> <!-- MOVE this whole DIV to reposition layers including the "cleared" DIV-->
+<div id="menu-overlay"></div>
+
+<div id="homes-filter-container" class="easingB"> <!-- MOVE this whole DIV to reposition layers including the "cleared" DIV-->
 	<!--
 		<div id="homes01" class="homes">
 			<div class="homesImg">img here</div>
