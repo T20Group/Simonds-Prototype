@@ -1,33 +1,5 @@
 <script type="text/javascript">
-$(function(){
-	
-// get cookie
-var selectedHome = $.cookie('homes');
-
-// target objects
-var $hid = $('#home-id');
-var $hname = $('#home-name');
-var $fp = $('#floorplan-count');
-var $target_overlay = $('#overlay');
-
-// place image
-$('#home-image').attr('src', 'images/homes/'+selectedHome+'.jpg');
-
-// get details
-$.getJSON("homes.json", function(data) {				
-	$.each(data.homes, function(name, val) {
-		if(val.id == selectedHome) { // search for id
-			$hid.text(val.id);
-			$hname.text(val.name);
-			$fp.text(val.floorplan.length);
-		}
-	});	
-});
-
-$('#floorplan-show').tapstart(function(e, touch) {
-	$target_overlay.load('overlay_floorplan.html');
-});
-
+$(function() {
 
 $('.iosSlider').iosSlider({
 	snapToChildren: true,
@@ -223,7 +195,7 @@ body {
     </div>
 	
     <div style="width:1400px; margin:0 auto; padding-top:50px;">
-    	<div style="float:left; width:500px; background-color:red; text-align:center; padding:50px; font-size:40px; color:white; ">Home Finder</div>
+    	<div style="float:left; width:500px; background-color:red; text-align:center; padding:50px; font-size:40px; color:white; " id="main-menu-home-finder-btn">Home Finder</div>
         <div style="float:right; width:500px; background-color:red; text-align:center; padding:50px; font-size:40px; color:white;">Promotions</div>
     </div>
    	  

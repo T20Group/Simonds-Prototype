@@ -30,26 +30,7 @@ $(function() {
 	var $overlay = $('#overlay');
 	var $content = $('#content');
 	
-	
-	
-	$('.link').tapstart(function(e, touch) {
-		var t = $(this).attr('data-view');
-		$content.load(t);
-		return false; 
-	});
-	
-	
-	$('.cookie').tapstart(function(e, touch) {
-		var val = $(this).text();
-		var t = $(this).attr('data-view');
-		
-		// find location of DL using watchdog
-		$.cookie('homes', val);
-		$content.load(t);
-		//alert(t);
-		return false;
-	});
-	
+
 	// 	/127.0.0.1:8080/repo/e9d805fa771f047f60fedcd96a2947d4930bdb6b/
 	
 	$('.delcookie').click(function() {
@@ -66,6 +47,22 @@ $(function() {
         alert(xhr.responseText);
     });
     
+    
+    
+    
+    $('#call-main-menu').on('tapstart', function(e) {
+	   $('.iosSlider').iosSlider('destroy');
+	   $content.load('main_menu.html');
+	   $('#finder-nav').addClass('hidden');
+	   return false;
+    });
+    
+    $('#call-finder, #main-menu-home-finder-btn').on('tapstart', function(e){
+	   $('.iosSlider').iosSlider('destroy');
+	   $content.load('content_homes.html');
+	   $('#finder-nav').removeClass('hidden');
+	   return false;
+    });
 	
 });
 </script>
@@ -105,17 +102,20 @@ $(function() {
 	- Gallery Control
 	-->
     
-    <div id="main-control">
-
+    <div id="main-nav" class="nav">
+	    <a id="call-main-menu" href="#">HOME</a>
+	    <a id="call-finder" href="#">FINDER</a>
+	    <a id="" href="#">WISHLIST</a>
+	</div> <!-- /main-control -->
 	    
-	<div id="finder-div"></div>
+	<div id="finder-nav" class="nav"></div>
 	<script>
-		$( "#finder-div" ).load( "includes/home-finder.html" );
+		$( "#finder-nav" ).load( "includes/home-finder.html" );
 	</script>
 	
 	
 	
-    </div> <!-- /main-control -->
+    
     	
 	
 </div> <!-- /navigation -->
@@ -135,6 +135,11 @@ $(function() {
 	-->
 	content layer <br/>
 	verson: cookie
+	
+		<script>
+			$( "#content" ).load( "main_menu.html" );
+		</script>
+	
 </div> <!-- /content -->
 		
 </div> <!-- /main-container -->		

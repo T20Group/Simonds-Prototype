@@ -130,6 +130,7 @@ $(function() {
 	
 	$target.on('tapstart', '.homes', function(e) {
 		
+		$('.iosSlider').iosSlider('destroy');
 		// store cookie
 		var val = $(this).attr('data-id');
 		$.cookie('homes', val);
@@ -307,7 +308,7 @@ $(function() {
 		// get current width
 		var $currWidth = parseFloat($('.middletext').attr('data-currwidth'));
 		// add new increment
-		var newVal = ($currWidth+increment_val).toFixed(2);
+		var newVal = $currWidth+increment_val;
 		// replace current value
 		$('.middletext').attr('data-currwidth', newVal);
 		
