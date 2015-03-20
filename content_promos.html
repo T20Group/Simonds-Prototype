@@ -1,0 +1,23 @@
+<script type="text/javascript">
+$(function(){
+	
+// get cookie
+var selectedPromos = $.cookie('promos');
+
+if (selectedPromos > 0) {
+	$('#promo-container').load('content_homes.html');
+	alert('show selected promo');
+	
+} else { 
+	$('#promo-container').load('overlay_floorplan.html');
+	alert('show all promos');
+	// no cookie detected
+
+}; // endif
+
+});
+</script>
+
+<div id="promo-container">
+	show all promos
+</div>
