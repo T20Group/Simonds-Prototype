@@ -4,6 +4,8 @@ $(function(){
 // get cookie
 var selectedHome = $.cookie('homes');
 
+if (selectedHome > 0) {
+
 // target objects
 var $hid = $('#home-id');
 var $hname = $('#home-name');
@@ -37,7 +39,6 @@ $('.iosSlider').iosSlider({
 	desktopClickDrag: true,
 	infiniteSlider: true,
 	snapSlideCenter: true,
-	//onSlideChange: slideChange,
 	elasticPullResistance:0.3,
 	frictionCoefficient:0.3,
 	snapFrictionCoefficient:0.95,
@@ -45,9 +46,12 @@ $('.iosSlider').iosSlider({
 });
 	
 
-function slideChange(args) {
 
-}
+} else { 
+
+	// no cookie detected
+
+}; // endif
 	
 });
 </script>	
