@@ -31,9 +31,14 @@ $(function() {
 	var $content = $('#content');
 	
 	// RESET COOKIES
-	$.cookie('homes', 0);
-	$.cookie('promos', 0);
-
+	function resetCookie() {
+		$.cookie('homes', 0);
+		$.cookie('promos', 0);	
+	}
+	
+	// INITIALIZE
+	resetCookie();
+	
 	// 	/127.0.0.1:8080/repo/e9d805fa771f047f60fedcd96a2947d4930bdb6b/
 	
 	$('.delcookie').click(function() {
@@ -59,14 +64,27 @@ $(function() {
 	   
 	   $('.nav').addClass('hidden');
 	   $('#main-menu-nav').removeClass('hidden');
+	   
+	   // reset cookie
+	   //resetCookie();
+	   
 	   return false;
     });
     
     $('#call-finder, #main-menu-home-finder-btn').on('tapstart', function(e){
 	   $('.iosSlider').iosSlider('destroy');
-	   $content.load('content_homes.html');
+	   $content.load('content_tutorial.html');
 	   $('.nav').addClass('hidden');
 	   $('#finder-nav').removeClass('hidden');
+	   
+	   
+		// show finder	   
+		$('#menu-overlay').addClass('background-overlay');
+		$('#homes-filter-container').addClass('opac');
+		$('#btn_right').addClass('btn_right_ani');
+		$('#btn_left').addClass('btn_left_ani');
+		$('#finder').removeClass('lower-finder');
+	   
 	   return false;
     });
     
@@ -119,7 +137,7 @@ $(function() {
     
     <div id="main-nav" class="">
 	    <a id="call-main-menu" href="#">HOME</a>
-	    <a id="call-finder" href="#">FINDER</a>
+<!-- 	    <a id="call-finder" href="#">FINDER</a> -->
 	    <a id="" href="#">WISHLIST</a>
 	</div> <!-- /main-control -->
 	
@@ -153,12 +171,9 @@ $(function() {
 	- MAY contain relative navigation
 	
 	-->
-	content layer <br/>
-	verson: cookie
-	
-		<script>
-			$( "#content" ).load( "main_menu.html" );
-		</script>
+	<script>
+		$( "#content" ).load( "main_menu.html" );
+	</script>
 	
 </div> <!-- /content -->
 		
