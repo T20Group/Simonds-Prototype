@@ -119,7 +119,7 @@ $(function() {
 			var bath = val.floorplan[0].bath;
 			var car = val.floorplan[0].car;
 			var width = val.floorplan[0].width;
-			var homes = '<div id="homes'+id+'" class="homes" data-storey="'+storey+'" data-width="'+width+'" data-id="'+id+'"><div class="homesImg"><img src="images/homes/'+id+'.jpg" />width: '+width+' Bed: '+ bed +' bath: '+bath+' car: '+car+'</div><div class="homesTitle">'+name+'</div></div>';
+			var homes = '<div id="homes'+id+'" class="homes hidden" data-storey="'+storey+'" data-width="'+width+'" data-id="'+id+'"><div class="homesImg"><img src="images/homes/'+id+'.jpg" />width: '+width+' Bed: '+ bed +' bath: '+bath+' car: '+car+'</div><div class="homesTitle">'+name+'</div></div>';
 			
 			$target.append(homes);
 			
@@ -146,8 +146,6 @@ $(function() {
 		$('#btn_left').removeClass('btn_left_ani');
 		$('.hud').removeClass('hidden');
 		$('#finder').toggleClass('lower-finder');
-		menuOpen = false;
-
 	});
 	
 		
@@ -203,62 +201,15 @@ $(function() {
 ///// OLD CODE BELOW //////
 ///////////////////////////
 
-	
-	if ($.cookie('has_run')!='true') {
-		$('.hud').addClass('hidden');
-	}
-	if ($.cookie('finder_clicked')=='true') {
-		$('#finder').addClass('lower-finder');
-	}
-	var menuOpen = false;
 	$('#btn_finder').tapstart(function(e, touch) {
-		$.cookie('has_run','true');
-		if (menuOpen) {
-			$('#menu-overlay').removeClass('background-overlay');
-			$('#homes-filter-container').removeClass('opac');
-			$('#btn_right').removeClass('btn_right_ani');
-			$('#btn_left').removeClass('btn_left_ani');
-			$('.hud').removeClass('hidden');
-			menuOpen = false;
-		} else {
-			$('#menu-overlay').addClass('background-overlay');
-			$('#homes-filter-container').addClass('opac');
-			$('#btn_right').addClass('btn_right_ani');
-			$('#btn_left').addClass('btn_left_ani');
-			$('.hud').addClass('hidden');
-			menuOpen = true;
-		}
+		$('#menu-overlay').toggleClass('background-overlay');
+		$('#homes-filter-container').toggleClass('opac');
+		$('#btn_right').toggleClass('btn_right_ani');
+		$('#btn_left').toggleClass('btn_left_ani');
+		$('#finder').toggleClass('lower-finder');
+	});
+	
 		
-		if ($.cookie('finder_clicked')) {
-			$('#finder').toggleClass('lower-finder');
-		} else {
-			$.cookie('finder_clicked', true);
-		}
-		$.cookie('finder_clicked', 'true');
-	});
-	
-	
-	//single/double
-/*
-	var finder_storeys = 'double';
-	$('#b_single').tapstart(function(e, touch) {
-		if (finder_storeys == 'double') {
-			$('#b_single').addClass('selected');
-			$('#b_double').removeClass('selected');
-			finder_storeys = 'single';
-		}
-		show_result();
-	});
-	$('#b_double').tapstart(function(e, touch) {
-		if (finder_storeys == 'single') {
-			$('#b_double').addClass('selected');
-			$('#b_single').removeClass('selected');
-			finder_storeys = 'double';
-		}
-		show_result();
-	});
-*/
-	
 	//results
 	var finder_results = ['1.png','2.png'];
 	var currFinderResult = 0;
@@ -380,6 +331,7 @@ $(function() {
     <div id="btn_left" class="btn_left easing">
         <div class="b_single_div"><a href="#" id="b_single" class="storey">single</a></div>
         <div class="b_double_div"><a href="#" id="b_double" class="storey">double</a></div>
+       
     </div>
     
     <div id="btn_right" class="btn_right easing">
@@ -391,8 +343,5 @@ $(function() {
             <div class="rightarrow"><a id="b_widthUp" href="#"><span class="glyphicon">&#57472;</span></a></div>
             <div class="clear"></div>
         </div>
-        <!--<img src="images/HUD/btn_finder_right.png" alt="btn_finder_right" height="180">-->
-        
     </div>
-    
 </div> <!-- /finder -->
