@@ -57,7 +57,7 @@ function slideLoad(args) {
 	position:absolute;
 	top:0;
 	left:50px;
-	transition:background 0.4s ease;
+	/*transition:background 0.4s ease;*/
 }
 .slider .item.selected .overlay {
 	background:rgba(0,0,0,0);
@@ -121,6 +121,7 @@ body {
 .iosSlider {
 	width: 100%;
 	height: 450px;
+	overflow:visible !important;
 }
 
 .iosSlider .slider {
@@ -136,9 +137,11 @@ body {
 	width: 1100px;
 	height: 100%;
 	text-align: center;
+	overflow:visible !important;
 }
 
 .iosSlider .slider .item img {
+	box-shadow: 0px 0px 20px #000000;
 	position: relative;
 	top: 0;
 	left: 0;
@@ -148,12 +151,14 @@ body {
 
 .indicators {
 	position: relative;
-	top: 10px;
+	top: -20px;
 	left: 0;
-	width: 200px;
+	width: 45px;
 	height: 10px;
 	margin: 0 auto;
 	z-index: 10;
+	padding:10px 10px 10px 15px;
+	background-color:rgba(0,0,0,0.5);
 }
 
 .indicators .item {
@@ -162,23 +167,40 @@ body {
 	height: 8px;
 	margin: 0 5px 0 0;
 	border: 1px solid #000;
+	background: #666;
 }
 
 .indicators .selected {
-	background: #666;
+	background: #FFF;
+}
+
+#second-tier-promos {
+	margin: 0 auto;
+    width: 1560px;
+}
+#second-tier-promos a {
+	display:block;
+	float:left;
+	width:500px;
+	padding:10px;
+}
+#second-tier-promos a img {
+	width:100%;
+	box-shadow: 5px 5px 20px #000000;
 }
 
 </style>
 
 
-<div class = 'responsiveHeight' style="background-image:url(images/BG/family.jpg)">
+<div class = 'responsiveHeight' style="background-image:url(images/BG/wood.jpg)">
   <div style="background-color:rgba(0,0,0,.5); height:1080px">
-   	<div style="color:white; text-align:center; padding-top:50px;">
+   	<div style="color:white; text-align:center; padding-top:50px; text-shadow: 2px 2px 6px #000000;">
         <!--<span style="font-size:28px;">Welcome to Simonds Homes</span><br />-->
-        <span style="font-size:60px;">Latest Promotions</span>
+        <span style="font-size:60px;">Latest Promotions</span><br />
+        <span style="font-size:28px;">Get huge savings with one of our latest offers</span>
     </div>
         
-    <div class = 'fluidHeight' style="margin-top:50px;">
+    <div class = 'fluidHeight' style="margin-top:30px; padding-top:20px; padding-bottom:20px; background-color:rgba(0,0,0,0.5);">
         
         <div class = 'sliderContainer'>
             
@@ -212,6 +234,12 @@ body {
         <div class = 'item'></div>
         <div class = 'item'></div>
     </div>
-   	  
+  
+  	<div id="second-tier-promos">
+    	
+        <a href="#"><img src="images/promos/banner-depositbuilder.jpg" /></a>
+        <a href="#"><img src="images/promos/banner-5kfinance.jpg" /></a>
+        <a href="#"><img src="images/promos/banner-mysimonds.jpg" /></a>
+    </div>
   </div>
 </div>
