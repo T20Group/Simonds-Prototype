@@ -55,8 +55,13 @@ html, body {
 		.homesDesc { text-shadow: 2px 2px #666; background: white; font-size: 20px; position: absolute; width: 30px; }
 		.homesTitle { font-weight: 100; font-size: 50px; text-shadow: 2px 2px #666; position: relative; top: -30px; text-align: left; left: 20px; }
 		
-	#homes-filter-container > .selected { }
-
+	#homes-filter-container > .selected { -moz-animation: glow 1.4s infinite;}
+	
+	@-moz-keyframes glow {
+	0% { box-shadow: 0 0 35px rgba(255, 255, 255, 1); }
+	50% { box-shadow: 0 0 5px rgba(255, 255, 255, .5); }
+	100% { box-shadow: 0 0 35px rgba(255, 255, 255, 1); }
+	
 /* CONTENT LAYER */
 #content { z-index: 800; width: 1920px; height: 1080px; overflow: hidden; }
 

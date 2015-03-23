@@ -119,7 +119,7 @@ $(function() {
 			var bath = val.floorplan[0].bath;
 			var car = val.floorplan[0].car;
 			var width = val.floorplan[0].width;
-			var homes = '<div id="homes'+id+'" class="homes selected hidden" data-storey="'+storey+'" data-width="'+width+'" data-id="'+id+'" style="background-image: url(images/homes/'+id+'.jpg);"><div class="homesDesc hidden">W: '+width+'<br/>Bed: '+ bed +'<br/>bath: '+bath+'<br/>car: '+car+'</div><div class="homesTitle">'+name+'</div></div>';
+			var homes = '<div id="homes'+id+'" class="homes hidden" data-storey="'+storey+'" data-width="'+width+'" data-id="'+id+'" style="background-image: url(images/homes/'+id+'.jpg);"><div class="homesDesc hidden">W: '+width+'<br/>Bed: '+ bed +'<br/>bath: '+bath+'<br/>car: '+car+'</div><div class="homesTitle">'+name+'</div></div>';
 			
 			$target.append(homes);
 			
@@ -138,6 +138,10 @@ $(function() {
 		// update content DIV
 		$content.load('content_homes.html');
 		
+		
+		// SELECTED
+		$('.homes').removeClass('selected');
+		$(this).addClass('selected');
 		
 		// minimize finder
 		$('#menu-overlay').removeClass('background-overlay');
