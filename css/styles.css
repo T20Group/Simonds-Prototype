@@ -42,8 +42,8 @@ html, body {
 #navigation {  z-index: 900;  }
 
 	#finder-nav { width: 0; height: 40px; position: absolute; left: 900px; bottom: -1080px; }
-	#main-nav { width: 100px; height: 100px; left: 20px; bottom: -1020px;  position: absolute; }
-	#main-nav a { display: inline-table; background: aqua; padding: 10px 20px; margin: 5px; }
+	#main-nav { bottom: -1110px; height: 100px; left: 20px; position: absolute; width: 600px; }
+	#main-nav a { display: inline-table; background: aqua; padding: 10px 20px; margin: 5px; float:left; }
 	#main-control { width: 100px; height: 50px; position: absolute; left: 0; bottom: -1000px; background: purple; text-align: center; }
 	
 	/* HOMES */
