@@ -8,6 +8,9 @@ if (selectedHome > 0) {
 
 // target objects
 var $hid = $('#home-id');
+var $bed = $('#home-bed');
+var $bath = $('#home-bath');
+var $car = $('#home-car');
 var $hname = $('#home-name');
 var $fp = $('#floorplan-count');
 var $target_overlay = $('#overlay');
@@ -21,7 +24,10 @@ $.getJSON("homes.json", function(data) {
 		if(val.id == selectedHome) { // search for id
 			$hid.text(val.id);
 			$hname.text(val.name);
-			$fp.text(val.floorplan.length);
+			$bed.text(val.floorplan[0].bed);
+			$bath.text(val.floorplan[0].bath);
+			$car.text(val.floorplan[0].car);
+			$fp.text(val.floorplan.length); // count total fp
 		}
 	});	
 });
@@ -131,13 +137,15 @@ $('.iosSlider').iosSlider({
 
 </style>
 	
-<div id="floorplan-container" style="position: absolute; right: 50px; bottom: 50px; background: rgba(0, 0, 0, 0.0); padding: 20px; z-index: 1000;">
+<div id="floorplan-container" style="position: absolute; right: 50px; bottom: 50px; background: rgba(0, 0, 0, 0.0); padding: 20px; z-index: 700;">
 	
 	<img id="floorplan-show" class="button" src="images/floorplan/3d_plan.png" width="400" />
     <div id="map-marker" style="left: 175px; position: absolute; top: 70px;"><img src="images/floorplan/map-marker-red.png" height="50" /></div>
+<!--
 	<span id="home-id"></span>
 	<span id="home-name"></span>
 	<span id="floorplan-count"></span>
+-->
 </div>
 
 <!-- Home image + gallery images -->
@@ -175,13 +183,13 @@ $('.iosSlider').iosSlider({
 </div>
 
 <div class="house-info hud">
-    <div class="house-name"><span class="houseName_txt">Astoria</span></div>
+    <div class="house-name"><span id="home-name" class="houseName_txt"> &nbsp; </span></div>
     <div class="house-icons">
-    <span class="number"><span class="houseBeds_txt">4</span></span>
+    <span class="number"><span id="home-bed" class="houseBeds_txt">0</span></span>
         <img class="icon" src="images/HUD/bed.png" width="45" height="38"/>
-        <span class="number"><span class="houseBaths_txt">3</span></span>
+        <span class="number"><span id="home-bath" class="houseBaths_txt">0</span></span>
         <img class="icon" src="images/HUD/bath.png" width="45" height="38"/>
-        <span class="number"><span class="houseCars_txt">2</span></span>
+        <span class="number"><span id="home-car" class="houseCars_txt">0</span></span>
         <img class="icon last" src="images/HUD/car.png" width="45" height="38"/>
         <div class="clear"></div>
     </div>
