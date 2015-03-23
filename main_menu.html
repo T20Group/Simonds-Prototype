@@ -35,10 +35,11 @@ function slideLoad(args) {
 <style type="text/css">
 
 .slider .item {
-	opacity:0.5;
+	filter: grayscale(80%) blur(3px) brightness(0.5);
 }
 .slider .item.selected {
-	opacity:1;
+	filter: grayscale(0%) blur(0px) brightness(1);
+	transition: filter .2s ease 0s;
 }
 
 .item > a { position: absolute; display: block; padding: 10px 20px; background: rgba(255, 255, 255, 0.7); color: #333; font-size: 12pt; width: ; text-align: center; }
