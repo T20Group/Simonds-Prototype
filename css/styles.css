@@ -48,11 +48,14 @@ html, body {
 	
 	/* HOMES */
 	#homes-filter-container { position: absolute; bottom: -1000px; left: -900px; width: 1920px; padding: 0px; text-align: center; opacity: 0; }
-	.homes {  padding: 10px; margin: 5px; background: rgba(255, 255, 255, 0.5); display: inline-table; }
+	.homes { color: white; padding: 0px; margin: 20px; background: rgba(0, 0, 0, 0.4); display: inline-table; background-size: cover; background-position: center center; width: 400px; height: 200px; }
 	.homes:hover { cursor: pointer; }
-		.homesImg { width: 200px; height: 160px; background: #fff; display: block; margin: 10px; }
-		.homesImg > img { width: 200px; height: auto; }
-		.homesTitle { font-weight: bold; display: block; }
+/* 		.homesImg { height: 200px; display: block; } */
+/* 		.homesImg > img { width: 400px; height: auto; } */
+		.homesDesc { text-shadow: 2px 2px #666; background: white; font-size: 20px; position: absolute; width: 30px; }
+		.homesTitle { font-weight: 100; font-size: 50px; text-shadow: 2px 2px #666; position: relative; top: -30px; text-align: left; left: 20px; }
+		
+	#homes-filter-container > .selected { }
 
 /* CONTENT LAYER */
 #content { z-index: 800; width: 1920px; height: 1080px; overflow: hidden; }
