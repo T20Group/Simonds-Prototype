@@ -1,15 +1,27 @@
 <script type="text/javascript">
 $(function(){
 	
+	function getPromo(id) {
+		switch(id) {
+			case 1:
+				$('#promo-container').load('content/promos/promos_unbelievable.html');
+				break;
+			default:
+				break;
+				
+		}
+	}
+	
 // get cookie
 var selectedPromos = $.cookie('promos');
 
 if (selectedPromos > 0) {
-	$('#promo-container').load('content_homes.html');
+	getPromo(selectedPromos);
+	//$('#promo-container').load('content_homes.html');
 	//alert('show selected promo');
 	
 } else { 
-	$('#promo-container').load('overlay_floorplan.html');
+	//$('#promo-container').load('overlay_floorplan.html');
 	//alert('show all promos');
 	// no cookie detected
 
@@ -23,7 +35,7 @@ $('.iosSlider').iosSlider({
 	snapSlideCenter: true,
 	onSlideChange: slideChange,
 	onSliderLoaded:slideLoad,
-	autoSlide: true,
+	autoSlide: false,
 	autoSlideTimer:5000,
 	autoSlideTransTimer:1200
 });
@@ -42,6 +54,10 @@ function slideLoad(args) {
 	//$('.slider .item:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
 }
 
+$('.b_promo').click(function() {
+	getPromo($(this).data('promo'));
+	$('#promo-container').addClass('show');
+});
 
 	
 });
@@ -158,7 +174,8 @@ body {
 	margin: 0 auto;
 	z-index: 10;
 	padding:10px 10px 10px 15px;
-	background-color:rgba(0,0,0,0.5);
+	background-color:rgba(0,0,0,0.7);
+	box-shadow:5px 5px 10px #000000 inset;
 }
 
 .indicators .item {
@@ -189,6 +206,15 @@ body {
 	box-shadow: 5px 5px 20px #000000;
 }
 
+#promo-container {
+	z-index:100;
+	display:none;
+}
+
+#promo-container.show {
+	display:inherit;
+}
+
 </style>
 
 
@@ -200,7 +226,7 @@ body {
         <span style="font-size:28px;">Get huge savings with one of our latest offers</span>
     </div>
         
-    <div class = 'fluidHeight' style="margin-top:30px; padding-top:20px; padding-bottom:20px; background-color:rgba(0,0,0,0.5);">
+    <div class = 'fluidHeight' style="margin-top:30px; padding-top:20px; padding-bottom:20px; background-color:rgba(0,0,0,0.5); box-shadow:5px 5px 10px #000000 inset;">
         
         <div class = 'sliderContainer'>
             
@@ -236,10 +262,13 @@ body {
     </div>
   
   	<div id="second-tier-promos">
-    	
-        <a href="#"><img src="images/promos/banner-depositbuilder.jpg" /></a>
-        <a href="#"><img src="images/promos/banner-5kfinance.jpg" /></a>
-        <a href="#"><img src="images/promos/banner-mysimonds.jpg" /></a>
+        <a class="b_promo" data-promo="1" href="#" ><img src="images/promos/banner-depositbuilder.jpg" /></a>
+        <a class="b_promo" data-promo="1" href="#"><img src="images/promos/banner-5kfinance.jpg" /></a>
+        <a class="b_promo" data-promo="1" href="#"><img src="images/promos/banner-mysimonds.jpg" /></a>
     </div>
   </div>
+</div>
+
+<div id="promo-container" class='responsiveHeight'>
+	
 </div>
