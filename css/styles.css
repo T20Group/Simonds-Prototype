@@ -34,7 +34,7 @@ html, body {
 }
 
 #main-container { position:absolute; top:0; left:0; width:1920px; height:1080px; overflow: hidden; background: white; }
-.container { position:absolute; top:0; left:0; }
+.container { position:absolute; }
 /* OVERLAY LAYER */
 #overlay { z-index: 1000; }
 
