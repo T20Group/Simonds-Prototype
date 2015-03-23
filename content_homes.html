@@ -91,6 +91,43 @@ $('.iosSlider').iosSlider({
 	75%  { margin-bottom: 15px; margin-right: 3px; }
 	100% { margin-bottom: 10px; }
 	}
+	
+.house-info {
+	position: absolute;
+    right: 0;
+    text-align: right;
+    z-index: 10;
+}
+
+.house-info .house-name {
+	color: #fff;
+    font-size: 80pt;
+    padding: 20px 60px 10px 10px;
+    text-align: right;
+    text-shadow: 2px 2px #666;
+}
+
+.house-info .house-icons .number {
+	display: block;
+    float: left;
+    font-size: 22pt;
+    margin-right: 8px;
+    margin-top: 8px;
+}
+
+.house-info .house-icons {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px 0 10px 30px;
+    position: absolute;
+    right: 0;
+    width: 300px;
+}
+
+.house-info .house-icons .icon {
+    display: block;
+    float: left;
+    margin-right: 30px;
+}
 
 </style>
 	
@@ -135,4 +172,17 @@ $('.iosSlider').iosSlider({
     </div>
 </div>
 </div>
+</div>
+
+<div class="house-info hud">
+    <div class="house-name"><span class="houseName_txt">Astoria</span></div>
+    <div class="house-icons">
+    <span class="number"><span class="houseBeds_txt">4</span></span>
+        <img class="icon" src="images/HUD/bed.png" width="45" height="38"/>
+        <span class="number"><span class="houseBaths_txt">3</span></span>
+        <img class="icon" src="images/HUD/bath.png" width="45" height="38"/>
+        <span class="number"><span class="houseCars_txt">2</span></span>
+        <img class="icon last" src="images/HUD/car.png" width="45" height="38"/>
+        <div class="clear"></div>
+    </div>
 </div>
