@@ -42,7 +42,7 @@ function slideLoad(args) {
 	position:absolute;
 	top:0;
 	left:50px;
-	transition:background 0.4s ease;
+	/*transition:background 0.4s ease;*/
 }
 .slider .item.selected .overlay {
 	background:rgba(0,0,0,0);
@@ -133,12 +133,14 @@ body {
 
 .indicators {
 	position: relative;
-	top: 10px;
+	top: -20px;
 	left: 0;
-	width: 200px;
+	width: 45px;
 	height: 10px;
 	margin: 0 auto;
 	z-index: 10;
+	padding:10px 10px 10px 15px;
+	background-color:rgba(0,0,0,0.5);
 }
 
 .indicators .item {
@@ -147,10 +149,11 @@ body {
 	height: 8px;
 	margin: 0 5px 0 0;
 	border: 1px solid #000;
+	background: #666;
 }
 
 .indicators .selected {
-	background: #666;
+	background: #FFF;
 }
 
 </style>
@@ -163,7 +166,7 @@ body {
         <span style="font-size:60px;">Lakeside Estate, Pakenham</span>
     </div>
         
-    <div class = 'fluidHeight' style="margin-top:50px;">
+    <div class = 'fluidHeight' style="margin-top:30px; padding-top:20px; padding-bottom:20px; background-color:rgba(0,0,0,0.5);">
         
         <div class = 'sliderContainer'>
             
