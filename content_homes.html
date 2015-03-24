@@ -4,8 +4,6 @@ $(function(){
 // get cookie
 var selectedHome = $.cookie('homes');
 
-if (selectedHome > 0) {
-
 // target objects
 var $hid = $('#home-id');
 var $bed = $('#home-bed');
@@ -42,6 +40,7 @@ $('.iosSlider').iosSlider({
 	autoSlideTimer:10000,
 	autoSlideTransTimer:3000,
 	snapToChildren: true,
+	onSlideChange: slideChange,
 	desktopClickDrag: true,
 	infiniteSlider: true,
 	snapSlideCenter: true,
@@ -50,14 +49,22 @@ $('.iosSlider').iosSlider({
 	snapFrictionCoefficient:0.95,
 	elasticFrictionCoefficient:0.8
 });
+
+$pin = $('#map-marker');
+
+function slideChange(args) {
+	var $this = $('.slider > .item:eq(' + (args.currentSlideNumber - 1) + ')');
+	var x = $('.slider > .item:eq(' + (args.currentSlideNumber - 1) + ')').children('img').attr('src');
+	var posX = $this.attr('data-pos-x');
+	var posY = $this.attr('data-pos-y');
+// 	alert(posX);
+	$pin.css({
+		"left" : posX+'px',
+		"top" : posY+'px'
+	})
 	
-
-
-} else { 
-
-	// no cookie detected
-
-}; // endif
+//	alert(x);
+};
 	
 });
 </script>	
@@ -126,7 +133,7 @@ $('.iosSlider').iosSlider({
     padding: 10px 0 10px 30px;
     position: absolute;
     right: 0;
-    width: 300px;
+    width: 310px;
 }
 
 .house-info .house-icons .icon {
@@ -135,12 +142,16 @@ $('.iosSlider').iosSlider({
     margin-right: 30px;
 }
 
+
+.easingPin { transition: all .3s cubic-bezier(0.5, .5, 1, 1); }
+
+
 </style>
 	
 <div id="floorplan-container" style="position: absolute; right: 50px; bottom: 50px; background: rgba(0, 0, 0, 0.0); padding: 20px; z-index: 700;">
 	
 	<img id="floorplan-show" class="button" src="images/floorplan/3d_plan.png" width="400" />
-    <div id="map-marker" style="left: 175px; position: absolute; top: 70px;"><img src="images/floorplan/map-marker-red.png" height="50" /></div>
+    <div id="map-marker" class="easingPin" style="left: 175px; position: absolute; top: 70px;"><img src="images/floorplan/map-marker-red.png" height="50" /></div>
 <!--
 	<span id="home-id"></span>
 	<span id="home-name"></span>
@@ -153,28 +164,28 @@ $('.iosSlider').iosSlider({
 <div class = 'inner'>
 <div class = 'iosSlider'>
     <div class = 'slider' style="width: 1920px; height: 1080px;">
-        <div class = 'item item1'>
+        <div class = 'item' data-pos-x='70' data-pos-y='180' data-loc='facade'>
             <img id="home-image" src="images/homes/homes.jpg" height="1080" />
         </div>
-        <div class = 'item item1'>
+        <div class = 'item' data-pos-x='75' data-pos-y='110' data-loc='kitchen'>
 	        <a class="floorplan-tag" href="#" style="top: 750px; left: 400px;"><img src="images/brand_logo/miele-logo-immer-besser.png" alt="miele-logo-immer-besser" width="142" height="50" /> <span class="arrow"></span></a>
 	        <a class="floorplan-tag" href="#" style="top: 500px; left: 1320px;"><img src="images/brand_logo/westinghouse.png" alt="westinghouse" height="50" /><span class="arrow"></span></a>
 	        <a class="floorplan-tag" href="#" style="top: 520px; left: 720px;"><img src="images/brand_logo/samsung.png" alt="samsung" width="175" height="50" /><span class="arrow"></span></a>
             <img src = 'images/gallery/gallery_1.jpg' />
         </div>
-        <div class = 'item item2'>
+        <div class = 'item' data-pos-x='343' data-pos-y='63' data-loc='alfresco'>
             <img src = 'images/gallery/gallery_2.jpg' />
         </div>
-        <div class = 'item item3'>
+        <div class = 'item' data-pos-x='150' data-pos-y='20' data-loc='outdoor'>
             <img src = 'images/gallery/gallery_3.jpg' />
         </div>
-        <div class = 'item item3'>
+        <div class = 'item' data-pos-x='180' data-pos-y='70' data-loc='living'>
             <img src = 'images/gallery/gallery_4.jpg' />
         </div>
-        <div class = 'item item3'>
+        <div class = 'item' data-pos-x='140' data-pos-y='170' data-loc='bed'>
             <img src = 'images/gallery/gallery_5.jpg' />
         </div>
-        <div class = 'item item3'>
+        <div class = 'item' data-pos-x='230' data-pos-y='120' data-loc='family'>
             <img src = 'images/gallery/gallery_6.jpg' />
         </div>
     </div>
