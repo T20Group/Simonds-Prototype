@@ -12,6 +12,11 @@ var $bed = $('#home-bed');
 var $bath = $('#home-bath');
 var $car = $('#home-car');
 var $hname = $('#home-name');
+var $hblock = $('#home-block');
+var $hwidth = $('#home-width');
+var $hdepth = $('#home-depth');
+var $hsqm = $('#home-sqm');
+var $hsq = $('#home-sq');
 var $fp = $('#floorplan-count');
 var $target_overlay = $('#overlay');
 
@@ -27,12 +32,17 @@ $.getJSON("homes.json", function(data) {
 			$bed.text(val.floorplan[0].bed);
 			$bath.text(val.floorplan[0].bath);
 			$car.text(val.floorplan[0].car);
+			$hblock.text(val.floorplan[0].block);
+			$hwidth.text(val.floorplan[0].width);
+			$hdepth.text(val.floorplan[0].depth);
+			$hsqm.text(val.floorplan[0].sqm);
+			$hsq.text(Math.round( val.floorplan[0].sqm/9.29 ));
 			$fp.text(val.floorplan.length); // count total fp
 		}
 	});	
 });
 
-$('#floorplan-show').tapstart(function(e, touch) {
+$('#floorplan-container').tapstart(function(e, touch) {
 	$target_overlay.load('overlay_floorplan.html');
 });
 
@@ -103,12 +113,13 @@ $('.iosSlider').iosSlider({
     right: 0;
     text-align: right;
     z-index: 10;
+	width:700px;
 }
 
 .house-info .house-name {
 	color: #fff;
     font-size: 80pt;
-    padding: 20px 60px 10px 10px;
+    padding: 20px 30px 10px 10px;
     text-align: right;
     text-shadow: 2px 2px #666;
 }
@@ -121,12 +132,26 @@ $('.iosSlider').iosSlider({
     margin-top: 8px;
 }
 
+.house-info .house-size {
+    background-color: #EA1C24;
+    height:50px;
+	float:left;
+	color:white;
+	font-size:18px;
+	padding: 10px 20px 0;
+	font-size:35px;
+}
 .house-info .house-icons {
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 10px 0 10px 30px;
-    position: absolute;
-    right: 0;
+    padding: 10px 0 0 30px;
     width: 300px;
+	height:50px;
+	float:left;
+}
+
+.house-info .house-bar {
+	position: absolute;
+    right: 0;
 }
 
 .house-info .house-icons .icon {
@@ -136,11 +161,22 @@ $('.iosSlider').iosSlider({
 }
 
 </style>
+
+<div id="floorplan-info" style="background: none repeat scroll 0 0 rgba(0, 0, 0, 0.7);
+    bottom: 116px;
+    color: white;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 14px 120px;
+    position: absolute;
+    right: -92px;
+    text-align: right;
+    z-index: 699;">Width: <span id="home-width"></span>m<br />Depth: <span id="home-depth"></span>m<br /><span style="font-size:19px; line-height:30px;">Suits <span id="home-block"></span>m blocks</span></div>
 	
 <div id="floorplan-container" style="position: absolute; right: 50px; bottom: 50px; background: rgba(0, 0, 0, 0.0); padding: 20px; z-index: 700;">
 	
-	<img id="floorplan-show" class="button" src="images/floorplan/3d_plan.png" width="400" />
-    <div id="map-marker" style="left: 175px; position: absolute; top: 70px;"><img src="images/floorplan/map-marker-red.png" height="50" /></div>
+	<img id="floorplan-show" class="button" src="images/floorplan/3d_plan_shadow.png" width="370" />
+    <div id="map-marker" style="left: 175px; position: absolute; top: 70px;"><img src="images/floorplan/map-marker-red.png" height="45" /></div>
 <!--
 	<span id="home-id"></span>
 	<span id="home-name"></span>
@@ -184,13 +220,17 @@ $('.iosSlider').iosSlider({
 
 <div class="house-info hud">
     <div class="house-name"><span id="home-name" class="houseName_txt"> &nbsp; </span></div>
-    <div class="house-icons">
-    <span class="number"><span id="home-bed" class="houseBeds_txt">0</span></span>
-        <img class="icon" src="images/HUD/bed.png" width="45" height="38"/>
-        <span class="number"><span id="home-bath" class="houseBaths_txt">0</span></span>
-        <img class="icon" src="images/HUD/bath.png" width="45" height="38"/>
-        <span class="number"><span id="home-car" class="houseCars_txt">0</span></span>
-        <img class="icon last" src="images/HUD/car.png" width="45" height="38"/>
-        <div class="clear"></div>
+    <div class="house-bar">
+    	<div class="house-size"><span id="home-sq"></span>sq</div>
+    	<div class="house-icons">
+        	<span class="number"><span id="home-bed" class="houseBeds_txt"></span></span>
+            <img class="icon" src="images/HUD/bed.png" width="45" height="38"/>
+            <span class="number"><span id="home-bath" class="houseBaths_txt"></span></span>
+            <img class="icon" src="images/HUD/bath.png" width="45" height="38"/>
+            <span class="number"><span id="home-car" class="houseCars_txt"></span></span>
+            <img class="icon last" src="images/HUD/car.png" width="45" height="38"/>
+            <div class="clear"></div>
+        </div>
     </div>
+    
 </div>
