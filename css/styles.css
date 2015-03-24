@@ -42,8 +42,22 @@ html, body {
 #navigation {  z-index: 900;  }
 
 	#finder-nav { width: 0; height: 40px; position: absolute; left: 900px; bottom: -1080px; }
-	#main-nav { bottom: -1110px; height: 100px; left: 20px; position: absolute; width: 600px; }
-	#main-nav a { display: inline-table; background: aqua; padding: 10px 20px; margin: 5px; float:left; }
+	#main-nav { bottom: -1095px; height: 100px; left: 20px; position: absolute; width: 600px; }
+	#main-nav a { display:block;
+    width:60px;
+    height:60px;
+    line-height:60px;
+    border: 2px solid #f5f5f5;
+    border-radius: 50%;
+    color:#f5f5f5;
+    text-align:center;
+    text-decoration:none;
+    background: rgba(0,0,0,0.5);
+    box-shadow: 0 0 3px gray;
+    font-size:20px;
+    font-weight:bold; float:left;
+	margin-right:20px; }
+	#main-nav a .glyphicon { font-size: 26px; line-height: 50px; }
 	#main-control { width: 100px; height: 50px; position: absolute; left: 0; bottom: -1000px; background: purple; text-align: center; }
 	
 	/* HOMES */
