@@ -1,6 +1,6 @@
 <script type="text/javascript">
 $(function(){
-	$('.promo_close').click(function() {
+	$('.promo_close').on('tapstart', function(e){
 	$('#promo-container').removeClass('show');
 });
 	});

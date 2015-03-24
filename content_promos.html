@@ -54,7 +54,11 @@ function slideLoad(args) {
 	//$('.slider .item:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
 }
 
-$('.b_promo').click(function() {
+$('.b_promo').on('tapstart', function(e){
+	getPromo($(this).data('promo'));
+	$('#promo-container').addClass('show');
+});
+$('.b_promo_slider').click(function() {
 	getPromo($(this).data('promo'));
 	$('#promo-container').addClass('show');
 });
@@ -222,15 +226,15 @@ body {
                 <div class = 'slider'>
                 
                     <div class = 'item selected'>
-                        <a class="b_promo" data-promo="1" href="#" ><img src="images/promos/banner-unbelievable.jpg" width="1000" height="450" />
+                        <a class="b_promo_slider" data-promo="1" href="#" ><img src="images/promos/banner-unbelievable.jpg" width="1000" height="450" />
                         <div class="overlay"></div></a>
                     </div>
                     <div class = 'item'>
-                        <a class="b_promo" data-promo="1" href="#" ><img src="images/promos/banner-express.jpg" width="1000" height="450" />
+                        <a class="b_promo_slider" data-promo="1" href="#" ><img src="images/promos/banner-express.jpg" width="1000" height="450" />
                         <div class="overlay"></div></a>
                     </div>
                     <div class = 'item'>
-                        <a class="b_promo" data-promo="1" href="#" ><img src="images/promos/banner-5kfinance.jpg" width="1000" height="450" />
+                        <a class="b_promo_slider" data-promo="1" href="#" ><img src="images/promos/banner-5kfinance.jpg" width="1000" height="450" />
                         <div class="overlay"></div></a>
                     </div>
                 
