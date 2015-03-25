@@ -121,6 +121,8 @@ $(function() {
 
 		//$thisdiv.remove();
 		$('#share-nav').addClass('hidden');
+		$('#shareResult').addClass('hidden');
+		$('#share-cont').removeClass('hidden');
 		return false;
 	});	
 	
@@ -131,7 +133,7 @@ $(function() {
 		} else {
 			$('#shareResult').removeClass('hidden');
 			$('#shareResult > h1').text(x);
-			$('#share-cont').hide();
+			$('#share-cont').addClass('hidden');
 			
 			// success
 			ajaxMail(x);
