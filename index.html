@@ -34,6 +34,7 @@ $(function() {
 	function resetCookie() {
 		$.cookie('homes', 0);
 		$.cookie('promos', 0);	
+		$.cookie('wishlist_homes', JSON.stringify([]) );	
 	}
 	
 	// INITIALIZE
@@ -64,7 +65,7 @@ $(function() {
 	   
 	   $('.nav').addClass('hidden');
 	   $('#main-menu-nav').removeClass('hidden');
-	   
+	   $('#wishlist-nav').addClass('hidden');
 	   // reset cookie
 	   //resetCookie();
 	   
@@ -84,6 +85,7 @@ $(function() {
 		$('#btn_right').addClass('btn_right_ani');
 		$('#btn_left').addClass('btn_left_ani');
 		$('#finder').removeClass('lower-finder');
+		$('#wishlist-nav').addClass('hidden');
 	   
 	   return false;
     });
@@ -92,11 +94,32 @@ $(function() {
 	   $('.iosSlider').iosSlider('destroy');
 	   $content.load('content_promos.html');
 	   $('.nav').addClass('hidden');
+	   $('#wishlist-nav').addClass('hidden');
 	   return false;
     });
     
     $('#call-wishlist-menu').on('tapstart', function(e) {
 	   $('#wishlist-nav').toggleClass('hidden');
+	   
+	   // check for duplicate fav
+	   var dupe = 0;
+	   var wishlist = JSON.parse($.cookie('wishlist_homes'))
+	   
+	   for(var i=1; i<wishlist.length; i++) {
+		   if(wishlist[i]==$.cookie('homes')) {
+			 	//alert('found dupe');
+			  dupe++;
+		   }
+	   }
+	   if(dupe>0) {
+		   $('#add-wishlist-btn').addClass('hidden');
+		   $('#remove-wishlist-btn').removeClass('hidden');
+	   } else {
+		   $('#add-wishlist-btn').removeClass('hidden');
+		   $('#remove-wishlist-btn').addClass('hidden');
+	   }
+	   //alert(wishlist.length);
+// 	   alert(wishlist);
 	   return false; 
     });
 	
