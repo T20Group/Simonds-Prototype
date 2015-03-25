@@ -42,11 +42,13 @@ $(function(){
 	$('#upg_ensuite').tapstart(function() {
 		$('#upimg_ens').toggleClass('show');
 		$('#upg_ensuite .upgrade_text').toggleClass('show');
+		$('#upg_ensuite .b_upgrade').toggleClass('selected');
 	});
 	
 	$('#upg_front').tapstart(function() {
 		$('#upimg_front').toggleClass('show');
 		$('#upg_front .upgrade_text').toggleClass('show');
+		$('#upg_front .b_upgrade').toggleClass('selected');
 	});
 	
 	$('#upg_rear').tapstart(function() {
@@ -61,13 +63,14 @@ $(function(){
 			$('#upimg_rear2').toggleClass('show');
 			$('#upg_rear .upgrade_text').toggleClass('show');
 			$('#big-floorplan-container img').css({"-moz-transform":"scale(1)"});
-			
+			$('#upg_rear .b_upgrade').removeClass('selected');
 		} else {
 			//option 1
 			$('#upimg_rear1').toggleClass('show');
 			$('#upg_rear .upgrade_text').toggleClass('show');
 			$('#big-floorplan-container img').css({"-moz-transform":"scale(1)"});
 			$('#upg_rear .upgrade_text').text('4 Bed & Alfresco');
+			$('#upg_rear .b_upgrade').addClass('selected');
 		}
 		
 	});
@@ -78,6 +81,11 @@ $(function(){
 #big-floorplan-container img {
 	margin:30px 130px;
 	transition:0.5s ease;
+	-khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 #big-floorplan-container .img_upgrade {
 	position:absolute;
@@ -118,6 +126,14 @@ $(function(){
     text-align: center;
     text-decoration: none;
     width: 40px;
+	opacity:0.8;
+	transition:0.3s ease;
+}
+.div_b_upgrade .b_upgrade.selected {
+	border-width: 4px;
+    margin-left: -2px;
+    margin-top: -2px;
+    opacity: 1;
 }
 .div_b_upgrade .upgrade_text {
 	color:white;
@@ -167,11 +183,11 @@ $(function(){
     display: block;
     font-size: 20px;
     font-weight: bold;
-    height: 35px;
-    line-height: 28px;
+    height: 40px;
+    line-height: 32px;
     text-align: center;
     text-decoration: none;
-    width: 35px;
+    width: 40px;
 }
 .tab-cont {
 	display:none;
