@@ -4,7 +4,8 @@ var $thisdiv = $('#overlay-floorplan-container');
 $(function(){
 	$('.close').tapstart(function() {
 
-		$thisdiv.remove();
+		//$thisdiv.remove();
+		$('#overlay-floorplan-container').removeClass('show');
 		return false;
 	});
 	
@@ -195,6 +196,17 @@ $(function(){
 .tab-cont.selected {
 	display:inherit;
 }
+#b_closefloorplan {
+	background-color: black;
+    color: white;
+    display: inline-block;
+    font-size: 30px;
+    opacity: 1;
+    padding: 18px;
+    text-align: center;
+	border-top:solid 7px white;
+	border-top: 7px solid #777;
+}
 
 </style>
 
@@ -211,6 +223,7 @@ $(function(){
     	<a id="b_roomviews" class="tab selected" data-div="floorplan-views-cont" href="#" style="border-top:solid 7px #e9622d;">Room Views</a>
         <a id="b_upgradeoptions" class="tab" data-div="floorplan-upgrade-cont" href="#" style="border-top:solid 7px #82c878;">Upgrade Options</a>
     </div>
+    <a id="b_closefloorplan" class="close" href="#" style="position:absolute; top:0; right:0;"><span class="glyphicon">&#xE014;</span></a>
     <div id="big-floorplan-container">
     	<img id="floorplan-image" src="images/floorplan/warner/floorplan_warner_base.png" height="1000" />
         <img id="upimg_rear1" class="img_upgrade" src="images/floorplan/warner/floorplan_warner_rear4bedAlfresco.png" height="1000" />
