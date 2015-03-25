@@ -10,11 +10,37 @@ $(function(){
 	
 	// grab current view location through cookie
 	
+	$('.goto').tapstart(function() {
+		//alert('ok');
+/*
+		var posX = $(this).attr('data-pos-x');
+		var posY = $(this).attr('data-pos-y');
+	// 	alert(posX);
+		$('#map-marker').css({
+			"left" : posX+'px',
+			"top" : posY+'px'
+		});
+		
+*/
+		var slide = $(this).attr('data-slide-no');
+		$('.iosSlider').iosSlider('goToSlide', slide);
+		
+		
+		return false;
+	});
+	
 });
 </script>
 
 <div id="overlay-floorplan-container" style="width:1820px; height:980px; background-color:rgba(0,0,0,0.6); position:absolute; left:50px; top:50px;">
     <a href="#" class="close" style="position: absolute; font-size: 20px; right: 10px; top: 10px; color:white;">close</a>
+    <a href="#" class="goto" data-slide-no='1' style="position: absolute; font-size: 20px; right: 10px; top: 40px; color:white;">facade</a><br/>
+    <a href="#" class="goto" data-slide-no='2' style="position: absolute; font-size: 20px; right: 10px; top: 60px; color:white;">kitchen</a><br/>
+    <a href="#" class="goto" data-slide-no='3' style="position: absolute; font-size: 20px; right: 10px; top: 80px; color:white;">alfresco</a><br/>
+    <a href="#" class="goto" data-slide-no='4' style="position: absolute; font-size: 20px; right: 10px; top: 100px; color:white;">outdoor</a><br/>
+    <a href="#" class="goto" data-slide-no='5' style="position: absolute; font-size: 20px; right: 10px; top: 120px; color:white;">living</a><br/>
+    <a href="#" class="goto" data-slide-no='6' style="position: absolute; font-size: 20px; right: 10px; top: 140px; color:white;">bed</a><br/>
+    <a href="#" class="goto" data-slide-no='7' style="position: absolute; font-size: 20px; right: 10px; top: 160px; color:white;">family</a><br/>
     <div id="big-floorplan-container" style="position:absolute; left:100px;">
     	<img id="floorplan-image" src="images/floorplan/warner/floorplan_warner_base.png" height="900" />
     </div>
