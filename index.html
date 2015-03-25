@@ -95,7 +95,10 @@ $(function() {
 	   return false;
     });
     
-    
+    $('#call-wishlist-menu').on('tapstart', function(e) {
+	   $('#wishlist-nav').toggleClass('hidden');
+	   return false; 
+    });
 	
 });
 </script>
@@ -138,7 +141,7 @@ $(function() {
     <div id="main-nav" class="">
 	    <a id="call-main-menu" href="#"><span class="glyphicon">&#xE021;</span></a>
 <!-- 	    <a id="call-finder" href="#">FINDER</a> -->
-	    <a id="" href="#"><span class="glyphicon">&#xE005;</span></a>
+	    <a id="call-wishlist-menu" href="#"><span class="glyphicon">&#xE005;</span></a>
         <a id="" href="#"><span class="glyphicon">&#x2709;</span></a>
 	</div> <!-- /main-control -->
 	
@@ -153,6 +156,11 @@ $(function() {
 	</script>
 	
 	
+	<!-- wishlist navigation -->
+	<div id="wishlist-nav" class=""></div>
+	<script>
+		$( "#wishlist-nav" ).load( "includes/wishlist.html" );
+	</script>
 	
     
     	
