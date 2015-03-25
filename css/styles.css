@@ -69,7 +69,8 @@ html, body {
 		.homesDesc { text-shadow: 2px 2px #666; background: white; font-size: 20px; position: absolute; width: 30px; }
 		.homesTitle { font-weight: 100; font-size: 50px; text-shadow: 2px 2px #666; position: relative; top: -30px; text-align: left; left: 20px; }
 		
-	#homes-filter-container > .selected { -moz-animation: glow 1.4s infinite;}
+/* 	#homes-filter-container > .selected { -moz-animation: glow 1.4s infinite;} */
+	#homes-filter-container > .selected { border: 10px solid rgba(255, 51, 51, 0.5); }
 	
 	@-moz-keyframes glow {
 	0% { box-shadow: 0 0 35px rgba(255, 255, 255, 1); }
