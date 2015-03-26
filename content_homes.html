@@ -91,7 +91,12 @@ function slideChange(args) {
 	
 //	alert(x);
 };
-	
+
+
+$('.floorplan-tag').tapstart(function() {
+	$(this).children('img').toggleClass('hidden');
+});
+
 });
 </script>	
 
@@ -238,9 +243,9 @@ function slideChange(args) {
             <img id="home-image" src="images/homes/homes.jpg" height="1080" />
         </div>
         <div class = 'item' data-pos-x='252' data-pos-y='30' data-loc='kitchen' data-slide-no='2'>
-	        <a class="floorplan-tag" href="#" style="top: 750px; left: 400px;"><img src="images/brand_logo/miele-logo-immer-besser.png" alt="miele-logo-immer-besser" width="142" height="50" /> <span class="arrow"></span></a>
-	        <a class="floorplan-tag" href="#" style="top: 500px; left: 1320px;"><img src="images/brand_logo/westinghouse.png" alt="westinghouse" height="50" /><span class="arrow"></span></a>
-	        <a class="floorplan-tag" href="#" style="top: 520px; left: 720px;"><img src="images/brand_logo/samsung.png" alt="samsung" width="175" height="50" /><span class="arrow"></span></a>
+	        <a class="floorplan-tag" href="#" style="bottom: 330px; left: 400px;"><img class="imgToggle" src="images/brand_logo/miele-logo-immer-besser.png" alt="miele-logo-immer-besser" width="142" height="50" /><img class="imgToggle hidden" src="images/brand_upgrades/miele-oven.png" alt="miele-oven" width="202" height="308" /><span class="arrow"></span></a>
+	        <a class="floorplan-tag" href="#" style="bottom: 500px; left: 1320px;"><img class="imgToggle" src="images/brand_logo/westinghouse.png" alt="westinghouse" width="227" height="59" /><img class="imgToggle hidden" src="images/brand_upgrades/westinghouse-dishwasher.png" alt="westinghouse-dishwasher" width="202" height="315" /><span class="arrow"></span></a>
+	        <a class="floorplan-tag" href="#" style="bottom: 500px; left: 720px;"><img class="imgToggle" src="images/brand_logo/samsung.png" alt="samsung" width="175" height="50" /><img class="imgToggle hidden" src="images/brand_upgrades/samsung-microwave.png" alt="samsung-microwave" width="202" height="308" /><span class="arrow"></span></a>
             <img src = 'images/gallery/gallery_1.jpg' />
         </div>
 
