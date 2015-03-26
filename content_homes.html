@@ -89,6 +89,11 @@ function slideChange(args) {
 		"top" : posY+'px'
 	})
 	
+	if (document.getElementById('overlay-floorplan-container')) {
+		$('#overlay-floorplan-container .b_view').removeClass('selected');
+		$('#overlay-floorplan-container #b_view'+(args.currentSlideNumber)).addClass('selected');
+	};
+	
 //	alert(x);
 };
 	
