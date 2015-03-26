@@ -1,6 +1,9 @@
 <script type="text/javascript">
 $(function(){
 	
+// set tutorial count
+var tutCount = 0;
+	
 // get cookie
 var selectedHome = $.cookie('homes');
 
@@ -58,6 +61,9 @@ $('#floorplan-container').tapstart(function(e, touch) {
 		$('#floorplan-container').addClass('toplayer');
 	}
 	
+	// hide tut
+	$('#floorplan-tut').remove();
+	
 });
 
 
@@ -89,17 +95,28 @@ function slideChange(args) {
 		"top" : posY+'px'
 	})
 	
+
+	if(args.currentSlideNumber==2) {
+		$('#slider-tut').remove();
+		$('#spec-tut').removeClass('hidden');
+	} else {
+		$('#spec-tut').addClass('hidden');
+	}
+	//console.log(args.currentSlideNumber);
+
 	if (document.getElementById('overlay-floorplan-container')) {
 		$('#overlay-floorplan-container .b_view').removeClass('selected');
 		$('#overlay-floorplan-container #b_view'+(args.currentSlideNumber)).addClass('selected');
 	};
 	
+
 //	alert(x);
 };
 
 
 $('.floorplan-tag').tapstart(function() {
 	$(this).children('img').toggleClass('hidden');
+	$('#spec-tut').remove();
 });
 
 });
@@ -212,7 +229,6 @@ $('.floorplan-tag').tapstart(function() {
 
 .easingPin { transition: all .3s cubic-bezier(0.5, .5, 1, 1); }
 
-
 </style>
 
 <div id="floorplan-info" style="background: none repeat scroll 0 0 rgba(0, 0, 0, 0.7);
@@ -237,7 +253,10 @@ $('.floorplan-tag').tapstart(function() {
 	<span id="home-name"></span>
 	<span id="floorplan-count"></span>
 -->
+    
 </div>
+
+
 
 <!-- Home image + gallery images -->
 <div class = 'responsiveHeight'>
@@ -288,5 +307,10 @@ $('.floorplan-tag').tapstart(function() {
             <div class="clear"></div>
         </div>
     </div>
-    
 </div>
+
+<div id="home-tut">aaa</div>
+<script>
+		$( "#home-tut" ).load( "content_tut_homes.html" );
+
+</script>

@@ -119,7 +119,7 @@ $(function() {
 			var bed = val.floorplan[0].bed;
 			var bath = val.floorplan[0].bath;
 			var car = val.floorplan[0].car;
-			var width = val.floorplan[0].width;
+			var width = val.floorplan[0].block;
 			var homes = '<div id="homes'+id+'" class="homes" data-storey="'+storey+'" data-width="'+width+'" data-id="'+id+'" style="background-image: url(images/homes/'+id+'.jpg);"><div class="homesDesc hidden">W: '+width+'<br/>Bed: '+ bed +'<br/>bath: '+bath+'<br/>car: '+car+'</div><div class="homesTitle">'+name+'</div></div>';
 			
 			$target.append(homes);
@@ -154,12 +154,17 @@ $(function() {
 	});
 	
 	function hideTut() {
-		$('#tut-copy').hide();
+		$('#tut-copy').remove();
 	}
-		
+	
+	function moveToHomes() {
+		$('#touchme-container').css({'left': '650px', 'top': '650px'});
+	}
+	
 	$('#b_single').on('tapstart', function(e) {
 		
 		hideTut();
+		moveToHomes()
 		
 		$('.homes').removeClass('hidden');
 		
@@ -188,6 +193,7 @@ $(function() {
 	$('#b_double').on('tapstart', function(e) {
 		
 		hideTut();
+		moveToHomes()
 		
 		$('.homes').removeClass('hidden');
 		
@@ -225,23 +231,9 @@ $(function() {
 		$('#wishlist-nav').addClass('hidden');
 	});
 	
-		
-	//results
-	var finder_results = ['1.png','2.png'];
-	var currFinderResult = 0;
-	
-	show_result = function() {
-		if (currFinderResult+1 == finder_results.length) {
-			currFinderResult = 0;
-		} else {
-			currFinderResult += 1;
-		}
-		if (finder_storeys == 'double') {
-			$('#finder-result img').attr('src','images/HUD/finder_ds_'+finder_results[currFinderResult]);
-		} else {
-			$('#finder-result img').attr('src','images/HUD/finder_ss_'+finder_results[currFinderResult]);
-		}
-	}
+	//lot width
+	var widths = [0, 12.5, 14, 15, 16]
+	var currWidth = 0;
 	
 	//lot width
 
@@ -249,6 +241,22 @@ $(function() {
 	
 	$('#b_widthUp').tapstart(function(e, touch) {
 		
+		// tut
+		hideTut();
+
+		if (currWidth < widths.length-1) {
+			currWidth++;
+			var newVal = widths[currWidth]+'m';
+		} else {
+			currWidth = 0;
+			var newVal = "all";
+		}
+		
+		findWidth(widths[currWidth]);
+		
+		$('.middletext').text(newVal);
+		
+/*
 		// get current width
 		var $currWidth = parseFloat($('.middletext').attr('data-currwidth'));
 		// add new increment
@@ -268,11 +276,50 @@ $(function() {
 		}
 		hideWidth(newVal);
 		//console.log(newVal);
+*/
 
 	});
 	
+	function findWidth(target) {
+	 	$('.homes').removeClass('hidden');
+		
+		if(target>0) {
+			$('.homes').addClass('hideWidth');
+			$('.homes').filter(function() {
+					
+				var t = parseFloat($(this).attr('data-width'));
+				if (parseFloat(target)==t) {
+					$(this).removeClass('hideWidth');	
+				}
+				
+			});	
+		} else { 
+			$('.homes').removeClass('hideWidth');
+		}
+	}
+	
 	$('#b_widthDown').tapstart(function(e, touch) {
 		
+		//tut
+		hideTut();
+		
+		currWidth--;
+		if (currWidth > 0) {
+			
+			var newVal = widths[currWidth]+'m';
+			//console.log(currWidth);
+		} 
+		if (currWidth <= 0) {
+			//console.log(currWidth);
+			currWidth = widths.length;
+			var newVal = "all";
+		}
+		
+		findWidth(widths[currWidth]);
+		
+		$('.middletext').text(newVal)
+		
+/*
 		// get current width
 		var $currWidth = parseFloat($('.middletext').attr('data-currwidth'));
 		// add new increment
@@ -293,6 +340,7 @@ $(function() {
 		
 	    hideWidth(newVal);
 		//console.log(newVal);
+*/
 
 	});
 	
@@ -345,7 +393,7 @@ $(function() {
         	<div class="half-circle"></div>
         	<div class="heading">lot width</div>
         	<div class="leftarrow"><a id="b_widthDown" href="#"><span class="glyphicon">&#57465;</span></a></div>
-            <div class="middletext" data-currwidth="9">ALL</div>
+            <div class="middletext" data-currwidth="9">~</div>
             <div class="rightarrow"><a id="b_widthUp" href="#"><span class="glyphicon">&#57472;</span></a></div>
             <div class="clear"></div>
         </div>
