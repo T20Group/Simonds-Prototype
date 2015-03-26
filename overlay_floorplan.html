@@ -26,7 +26,8 @@ $(function(){
 */
 		var slide = $(this).attr('data-slide-no');
 		$('.iosSlider').iosSlider('goToSlide', slide);
-		
+		$('.b_view').removeClass('selected');
+		$(this).addClass('selected');
 		
 		return false;
 	});
@@ -190,6 +191,14 @@ $(function(){
     text-align: center;
     text-decoration: none;
     width: 40px;
+	opacity:0.6;
+	transition:0.3s ease;
+}
+.div_b_view .b_view.selected {
+	border-width: 4px;
+    margin-left: -2px;
+    margin-top: -2px;
+    opacity: 1;
 }
 .tab-cont {
 	display:none;
@@ -252,19 +261,19 @@ $(function(){
             
         <div id="floorplan-views-cont" class="tab-cont selected">
                 <div style="top:926px; left:580px;" class="div_b_view">
-                    <a class="b_view goto" data-slide-no='1' href="#"><span class="glyphicon">&#xE062;</span></a>
+                    <a id="b_view1" class="b_view goto" data-slide-no='1' href="#"><span class="glyphicon">&#xE062;</span></a>
                 </div>
                 <div style="top:297px; left:548px;" class="div_b_view">
-                    <a class="b_view goto" data-slide-no='2' href="#"><span class="glyphicon">&#xE062;</span></a>
+                    <a id="b_view2" class="b_view goto" data-slide-no='2' href="#"><span class="glyphicon">&#xE062;</span></a>
                 </div>
                 <div style="top:276px; left:708px;" class="div_b_view">
-                    <a class="b_view goto" data-slide-no='5' href="#"><span class="glyphicon">&#xE062;</span></a>
+                    <a id="b_view5" class="b_view goto" data-slide-no='5' href="#"><span class="glyphicon">&#xE062;</span></a>
                 </div>
                 <div style="top:833px; left:683px;" class="div_b_view">
-                    <a class="b_view goto" data-slide-no='4' href="#"><span class="glyphicon">&#xE062;</span></a>
+                    <a id="b_view4" class="b_view goto" data-slide-no='4' href="#"><span class="glyphicon">&#xE062;</span></a>
                 </div>
                 <div style="top:536px; left:580px;" class="div_b_view">
-                    <a class="b_view goto" data-slide-no='3' href="#"><span class="glyphicon">&#xE062;</span></a>
+                    <a id="b_view3" class="b_view goto" data-slide-no='3' href="#"><span class="glyphicon">&#xE062;</span></a>
                 </div>
         </div>
         

@@ -95,11 +95,19 @@ function slideChange(args) {
 		"top" : posY+'px'
 	})
 	
+
 	if(args.currentSlideNumber==2) {
 		$('#slider-tut').remove();
 		$('#spec-tut').removeClass('hidden');
 	}
 	//console.log(args.currentSlideNumber);
+
+	if (document.getElementById('overlay-floorplan-container')) {
+		$('#overlay-floorplan-container .b_view').removeClass('selected');
+		$('#overlay-floorplan-container #b_view'+(args.currentSlideNumber)).addClass('selected');
+	};
+	
+
 //	alert(x);
 };
 
