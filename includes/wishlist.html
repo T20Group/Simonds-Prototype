@@ -12,83 +12,126 @@
 		margin: 10px 0 10px;
 		width: 99%;
 	}
+	
+	#fav-homes-list li:nth-child(3n+3) {
+		padding-right: 0px;
+	}
+	.fav-homes { float: left; padding-right: 20px; padding-bottom: 20px; }
+	.fav-homes img { display: block; height: 132px; }
 </style>
 
-<div style="padding: 10px; background: rgba(0, 0, 0, 0.6); border:solid 15px white; position: absolute; max-height: 800px;  min-height: 400px; max-width: 1800px; max-width: 1700px; min-width: 320px; bottom: -900px; left: 85px; z-index: 1000; box-shadow:5px 5px 20px #000000;">
+<script type="text/javascript">
+$(function() {
 	
-	<div style="padding:60px 40px; position:relative; width: 1700px;">
+	
+	$('#add-wishlist-btn').on('tapstart', function(e) {
+		
+		$(this).toggleClass('hidden');
+		$('#remove-wishlist-btn').toggleClass('hidden');
+		
+		// get cookie
+		var wishlist = JSON.parse($.cookie('wishlist_homes')); // deserialize
+		
+		// check duplicate on index nav layer
+		
+		wishlist.push($.cookie('homes')); // modify value
+		$.cookie("wishlist_homes", JSON.stringify(wishlist)); // serialize
+		//alert(wishlist);
+		
+		// repoppulate #fav-homes-list
+	});
+	
+	
+	$('#remove-wishlist-btn').on('tapstart', function(e) {
+		$(this).toggleClass('hidden');
+		$('#add-wishlist-btn').toggleClass('hidden');
+		
+		alert('ok');
+		// get cookie
+		var wishlist = JSON.parse($.cookie('wishlist_homes')); // deserialize
+		
+		// find cookie index
+		for(var i=1; i<wishlist.length; i++) {
+		   if(wishlist[i]==$.cookie('homes')) {
+			 	alert(i);
+			  wishlist.splice(i, -1);
+		   }
+	   }
+	   alert(wishlist);
+	   $.cookie("wishlist_homes", JSON.stringify(wishlist)); // serialize
+		
+	});
+	// repopulate function;
+	
+	function addHomes() {
+		
+	}
+	
+});
+</script>
+
+<div style="padding: 10px; background: rgba(0, 0, 0, 0.6); border:solid 15px white; position: absolute; max-height: 800px;  min-height: 400px; max-width: 1800px; max-width: 1700px; min-width: 320px; bottom: -900px; left: 85px; z-index: 1000; box-shadow:5px 5px 20px #000000; color: white;">
+	
+	<div style="padding:60px 40px; position:relative; width: 750px;">
 		<div id="homes-wishlist-container" style="min-width: 750px; float: left; ">
         	<span style="font-size:50px; color:white; width: 200px; ">Homes</span>
             <div style="border:solid 1px white; margin-top:5px; margin-bottom: 30px;"></div>
             
-            <div id="fav-homes-list" style="max-height: 573px; overflow-x: scroll;">
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            asadadada <br/>
-            </div> <!-- /fav-homes-list -->
-            
+            <ul id="fav-homes-list" style="max-height: 573px; overflow-x: scroll;">
+	            <li class="fav-homes">
+		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
+		            Homes name
+	            </li>
+	            <li class="fav-homes">
+		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
+		            Homes name
+	            </li>
+	            <li class="fav-homes">
+		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
+		            Homes name
+	            </li>
+	            <li class="fav-homes">
+		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
+		            Homes name
+	            </li>
+	            <li class="fav-homes">
+		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
+		            Homes name
+	            </li>
+	            <li class="fav-homes">
+		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
+		            Homes name
+	            </li>
+	            <li class="fav-homes">
+		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
+		            Homes name
+	            </li>
+	            <li class="fav-homes">
+		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
+		            Homes name
+	            </li>
+	            <li class="fav-homes">
+		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
+		            Homes name
+	            </li>
+	            <li class="fav-homes">
+		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
+		            Homes name
+	            </li>
+	            <li class="fav-homes">
+		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
+		            Homes name
+	            </li>
+	            <li class="fav-homes">
+		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
+		            Homes name
+	            </li>
+
+            </ul> <!-- /fav-homes-list -->
+            <div class="cleared"></div>
 		</div> <!-- /homes-wishlist-container -->
-		<div id="promos-wishlist-container" class="" style="width: 750px; float: left; margin-left: 50px;">
+		
+		<div id="promos-wishlist-container" class="hidden" style="width: 750px; float: left; margin-left: 50px;">
         	<span style="font-size:50px; color:white; width: 500px; ">Promotions</span>
             <div style="border:solid 1px white; margin-top:5px; margin-bottom: 30px;"></div>
             asadadada <br/>
@@ -107,7 +150,7 @@
 		<div class="cleared"></div>
 	</div> <!-- close main container -->
 	
-	<div style="box-shadow:2px 2px 10px #000000; background:#c90c11; padding:20px 30px; color:white; font-size:16px; line-height: 20px; position: absolute; right: 20px; bottom: -50px; width: 240px; "><span style="font-size:32px; line-height:46px;">Share wishlist</span><br>
+	<div id="share-wishlist-container" class="hidden" style="box-shadow:2px 2px 10px #000000; background:#c90c11; padding:20px 30px; color:white; font-size:16px; line-height: 20px; position: absolute; right: 20px; bottom: -50px; width: 240px; "><span style="font-size:32px; line-height:46px;">Share wishlist</span><br>
 
 	<form id="claim-form">
 	    <input type="email" value="" placeholder="Email" required name="email">
@@ -115,7 +158,8 @@
 	</form>
 	</div>
 	
-	<a href="#" style="padding:20px 25px 25px; background:black; border:solid 4px white; color:white; width: 300px; font-size:24px; box-shadow:2px 2px 20px #000000; position:absolute; bottom:-50px; left: 40px;"><span style="padding-right:5px;" class="glyphicon">&#xE132;</span> Add to wishlist</a>
+	<a id="add-wishlist-btn" href="#" style="padding:20px 25px 25px; background:black; border:solid 4px white; color:white; width: 300px; font-size:24px; box-shadow:2px 2px 20px #000000; position:absolute; bottom:-50px; left: 40px;"><span style="padding-right:5px;" class="glyphicon">&#xE132;</span> Add to wishlist</a>
+	<a id="remove-wishlist-btn" class="hidden" href="#" style="padding:20px 25px 25px; background:black; border:solid 4px white; color:white; width: 300px; font-size:24px; box-shadow:2px 2px 20px #000000; position:absolute; bottom:-50px; left: 40px;"><span style="padding-right:5px;" class="glyphicon">&#xE132;</span> Remove from wishlist</a>
 	
 </div>
 
