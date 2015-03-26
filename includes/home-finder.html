@@ -157,10 +157,6 @@ $(function() {
 		$('#tut-copy').remove();
 	}
 	
-	function moveToStorey() {
-		$('#touchme-container').css({'left': '430px', 'top': '930px'});
-	}
-	
 	function moveToHomes() {
 		$('#touchme-container').css({'left': '650px', 'top': '650px'});
 	}
@@ -247,7 +243,6 @@ $(function() {
 		
 		// tut
 		hideTut();
-		moveToStorey();
 
 		if (currWidth < widths.length-1) {
 			currWidth++;
@@ -307,7 +302,6 @@ $(function() {
 		
 		//tut
 		hideTut();
-		moveToStorey();
 		
 		currWidth--;
 		if (currWidth > 0) {
