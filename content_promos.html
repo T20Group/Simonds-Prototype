@@ -6,17 +6,26 @@ $(function(){
 			case 1:
 				$('#promo-container').load('content/promos/promos_unbelievable.html');
 				break;
+			case 2:
+				$('#promo-container').load('content/promos/promos_mysimonds.html');
+				break;	
+			case 3:
+				$('#promo-container').load('content/promos/promos_depositbuilder.html');
+				break;
+			case 4:
+				$('#promo-container').load('content/promos/promos_5kfinance.html');
+				break;
 			default:
 				break;
-				
 		}
+		$('#promo-container').addClass('show');
 	}
 	
 // get cookie
 var selectedPromos = $.cookie('promos');
 
 if (selectedPromos > 0) {
-	getPromo(selectedPromos);
+	getPromo(parseInt(selectedPromos));
 	//$('#promo-container').load('content_homes.html');
 	//alert('show selected promo');
 	
@@ -56,11 +65,9 @@ function slideLoad(args) {
 
 $('.b_promo').on('tapstart', function(e){
 	getPromo($(this).data('promo'));
-	$('#promo-container').addClass('show');
 });
 $('.b_promo_slider').click(function() {
 	getPromo($(this).data('promo'));
-	$('#promo-container').addClass('show');
 });
 	
 });
@@ -230,11 +237,11 @@ body {
                         <div class="overlay"></div></a>
                     </div>
                     <div class = 'item'>
-                        <a class="b_promo_slider" data-promo="1" href="#" ><img src="images/promos/banner-express.jpg" width="1000" height="450" />
+                        <a class="b_promo_slider" data-promo="2" href="#" ><img src="images/promos/banner-mysimonds.jpg" width="1000" height="450" />
                         <div class="overlay"></div></a>
                     </div>
                     <div class = 'item'>
-                        <a class="b_promo_slider" data-promo="1" href="#" ><img src="images/promos/banner-5kfinance.jpg" width="1000" height="450" />
+                        <a class="b_promo_slider" data-promo="3" href="#" ><img src="images/promos/banner-depositbuilder.jpg" width="1000" height="450" />
                         <div class="overlay"></div></a>
                     </div>
                 
@@ -253,9 +260,9 @@ body {
     </div>
   
   	<div id="second-tier-promos">
-        <a class="b_promo" data-promo="1" href="#" ><img src="images/promos/banner-depositbuilder.jpg" /></a>
-        <a class="b_promo" data-promo="1" href="#"><img src="images/promos/banner-5kfinance.jpg" /></a>
-        <a class="b_promo" data-promo="1" href="#"><img src="images/promos/banner-mysimonds.jpg" /></a>
+        <a class="b_promo" data-promo="3" href="#" ><img src="images/promos/banner-depositbuilder.jpg" /></a>
+        <a class="b_promo" data-promo="4" href="#"><img src="images/promos/banner-5kfinance.jpg" /></a>
+        <a class="b_promo" data-promo="2" href="#"><img src="images/promos/banner-mysimonds.jpg" /></a>
     </div>
   </div>
 </div>
