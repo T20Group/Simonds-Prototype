@@ -2,7 +2,7 @@
 $(function(){
 	
 // set tutorial count
-var tutCount = 0;
+var tutCount = parseInt($.cookie('tut'));
 	
 // get cookie
 var selectedHome = $.cookie('homes');
@@ -64,6 +64,9 @@ $('#floorplan-container').tapstart(function(e, touch) {
 	// hide tut
 	$('#floorplan-tut').remove();
 	
+	// add tut count
+	addTutCount();
+	
 });
 
 
@@ -117,7 +120,16 @@ function slideChange(args) {
 $('.floorplan-tag').tapstart(function() {
 	$(this).children('img').toggleClass('hidden');
 	$('#spec-tut').remove();
+	
+	// add tut count
+	addTutCount();
 });
+
+function addTutCount() {
+	var tutCount = parseInt($.cookie('tut'));
+	tutCount++;
+	$.cookie('tut', tutCount);
+}
 
 });
 </script>	
@@ -311,6 +323,14 @@ $('.floorplan-tag').tapstart(function() {
 
 <div id="home-tut">aaa</div>
 <script>
+$(function() {
+	var tutCount = parseInt($.cookie('tut'));
+	//alert(tutCount);
+	if(tutCount<3) {
 		$( "#home-tut" ).load( "content_tut_homes.html" );
+	} else {
+		$( "#home-tut" ).remove();
+	}
+});
 
 </script>
