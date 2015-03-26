@@ -81,4 +81,5 @@ html, body {
 #content { z-index: 800; width: 1920px; height: 1080px; overflow: hidden; }
 
 
-/* TUT LAYER */
+/* FAV LAYER */
+#call-wishlist-menuB { color: red !important; transform: scale(2); }
