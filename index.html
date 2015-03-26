@@ -91,6 +91,7 @@ $(function() {
     });
     
     $('#main-menu-promo-btn').on('tapstart', function(e){
+		//$.cookie('promos', 0);
 	   $('.iosSlider').iosSlider('destroy');
 	   $content.load('content_promos.html');
 	   $('.nav').addClass('hidden');
