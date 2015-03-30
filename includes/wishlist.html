@@ -33,39 +33,70 @@ $(function() {
 		var wishlist = JSON.parse($.cookie('wishlist_homes')); // deserialize
 		
 		// check duplicate on index nav layer
-		
+		//alert('this home is: '+$.cookie('homes') );
 		wishlist.push($.cookie('homes')); // modify value
 		$.cookie("wishlist_homes", JSON.stringify(wishlist)); // serialize
-		//alert(wishlist);
-		
+	
 		// repoppulate #fav-homes-list
+		update_wishlist();
 	});
 	
+	// make home function
+	function update_wishlist() {
+		$wishlist = $('#fav-homes-list');
+		$wishlist.children('li').remove();
+		$.getJSON("homes.json", function(data) {	
+			
+			var wishlist = JSON.parse($.cookie('wishlist_homes'));
+			for(var i = 0; i < wishlist.length; i++) {
+					
+				$.each(data.homes, function(name, val) {
+					// append dynamic homes
+					if(val.id == wishlist[i]) { // search for id			
+						var id = val.id;
+						var name = val.name;
+						var homes = '<li class="fav-homes" data-id="'+id+'"><img class="fav-image" src="images/homes/'+id+'.jpg"  /><br/>'+name+'</li>';
+						
+						$wishlist.append(homes);
+					}
+				});
+			};
+		});
+	}
 	
 	$('#remove-wishlist-btn').on('tapstart', function(e) {
 		$(this).toggleClass('hidden');
 		$('#add-wishlist-btn').toggleClass('hidden');
 		
-		alert('ok');
+		//alert('clicked remove');
 		// get cookie
 		var wishlist = JSON.parse($.cookie('wishlist_homes')); // deserialize
 		
 		// find cookie index
-		for(var i=1; i<wishlist.length; i++) {
+		for(var i=0; i<wishlist.length; i++) {
 		   if(wishlist[i]==$.cookie('homes')) {
-			 	alert(i);
-			  wishlist.splice(i, -1);
+			  //alert('deleting this house: ' +wishlist[i]);
+			  wishlist.splice(i, 1); // remove from cookie
 		   }
 	   }
-	   alert(wishlist);
+	   
 	   $.cookie("wishlist_homes", JSON.stringify(wishlist)); // serialize
-		
+	   //alert( JSON.parse($.cookie('wishlist_homes')) );
+	   
+	   update_wishlist();
 	});
 	// repopulate function;
 	
-	function addHomes() {
+	$('#fav-homes-list').on('tap', '.fav-homes', function(e) {
+		$('.iosSlider').iosSlider('destroy');
+		// store cookie
+		var val = $(this).attr('data-id');
+		$.cookie('homes', val);
 		
-	}
+		// update content DIV
+		$('#content').load('content_homes.html');
+	});
+
 	
 });
 </script>
@@ -77,54 +108,9 @@ $(function() {
         	<span style="font-size:50px; color:white; width: 200px; ">Homes</span>
             <div style="border:solid 1px white; margin-top:5px; margin-bottom: 30px;"></div>
             
-            <ul id="fav-homes-list" style="max-height: 573px; overflow-x: scroll;">
+            <ul id="fav-homes-list" style="max-height: 573px; overflow-x: visible;">
 	            <li class="fav-homes">
-		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
-		            Homes name
-	            </li>
-	            <li class="fav-homes">
-		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
-		            Homes name
-	            </li>
-	            <li class="fav-homes">
-		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
-		            Homes name
-	            </li>
-	            <li class="fav-homes">
-		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
-		            Homes name
-	            </li>
-	            <li class="fav-homes">
-		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
-		            Homes name
-	            </li>
-	            <li class="fav-homes">
-		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
-		            Homes name
-	            </li>
-	            <li class="fav-homes">
-		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
-		            Homes name
-	            </li>
-	            <li class="fav-homes">
-		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
-		            Homes name
-	            </li>
-	            <li class="fav-homes">
-		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
-		            Homes name
-	            </li>
-	            <li class="fav-homes">
-		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
-		            Homes name
-	            </li>
-	            <li class="fav-homes">
-		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
-		            Homes name
-	            </li>
-	            <li class="fav-homes">
-		            <img class="fav-image" src="images/homes/83.jpg"  /><br/>
-		            Homes name
+		            Wishlist currently empty. Start collecting via Home Finder.
 	            </li>
 
             </ul> <!-- /fav-homes-list -->
