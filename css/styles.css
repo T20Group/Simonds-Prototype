@@ -42,7 +42,7 @@ html, body {
 #navigation {  z-index: 900;  }
 
 	#finder-nav { width: 0; height: 40px; position: absolute; left: 900px; bottom: -1080px; }
-	#main-nav { bottom: -1095px; height: 100px; left: 20px; position: absolute; width: 600px; }
+	#main-nav { bottom: -1095px; height: 100px; left: 20px; position: absolute; width: 600px; z-index: 100; }
 	#main-nav a { display:block;
     width:60px;
     height:60px;
