@@ -2,7 +2,7 @@
 var $thisdiv = $('#overlay-floorplan-container');
 	
 $(function(){
-	$('.close').tapstart(function() {
+	$('.close, #fp-bg').tapstart(function() {
 
 		//$thisdiv.remove();
 		$('#overlay-floorplan-container').removeClass('show');
@@ -77,6 +77,7 @@ $(function(){
 		}
 		
 	});
+
 	
 });
 </script>
@@ -103,7 +104,7 @@ $(function(){
 	background-color: rgba(40, 40, 40, 0.95); 
 	height: 1000px; 
 	position: absolute; 
-	left: 1920px; 
+	left: 2500px; 
 	top: 40px; 
 	width: 1200px;
 	transition:1s ease left;
@@ -221,14 +222,6 @@ $(function(){
 </style>
 
 <div id="overlay-floorplan-container" class="show">
-    <!--<a href="#" class="close" style="position: absolute; font-size: 20px; right: 10px; top: 10px; color:white;">close</a>
-    <a href="#" class="goto" data-slide-no='1' style="position: absolute; font-size: 20px; right: 10px; top: 40px; color:white;">facade</a><br/>
-    <a href="#" class="goto" data-slide-no='2' style="position: absolute; font-size: 20px; right: 10px; top: 60px; color:white;">kitchen</a><br/>
-    <a href="#" class="goto" data-slide-no='3' style="position: absolute; font-size: 20px; right: 10px; top: 80px; color:white;">alfresco</a><br/>
-    <a href="#" class="goto" data-slide-no='4' style="position: absolute; font-size: 20px; right: 10px; top: 100px; color:white;">outdoor</a><br/>
-    <a href="#" class="goto" data-slide-no='5' style="position: absolute; font-size: 20px; right: 10px; top: 120px; color:white;">living</a><br/>
-    <a href="#" class="goto" data-slide-no='6' style="position: absolute; font-size: 20px; right: 10px; top: 140px; color:white;">bed</a><br/>
-    <a href="#" class="goto" data-slide-no='7' style="position: absolute; font-size: 20px; right: 10px; top: 160px; color:white;">family</a><br/>-->
     <div id="floorplan-tabs">
     	<a id="b_roomviews" class="tab selected" data-div="floorplan-views-cont" href="#" style="border-top:solid 7px #e9622d;">Room Views</a>
         <a id="b_upgradeoptions" class="tab" data-div="floorplan-upgrade-cont" href="#" style="border-top:solid 7px #82c878;">Upgrade Options</a>
@@ -277,5 +270,9 @@ $(function(){
                 </div>
         </div>
         
-  </div>
+	</div>
+	
+	<div id="fp-bg" style="background: none repeat scroll 0% 0% rgba(0, 0, 0, 0); position: absolute; width: 1920px; left: -360px; top: 0px; z-index: -100; height: 950px;">
+		
+	</div>
 </div>

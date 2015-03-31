@@ -144,13 +144,8 @@ $(function() {
 		$('.homes').removeClass('selected');
 		$(this).addClass('selected');
 		
-		// minimize finder
-		$('#menu-overlay').removeClass('background-overlay');
-		$('#homes-filter-container').removeClass('opac');
-		$('#btn_right').removeClass('btn_right_ani');
-		$('#btn_left').removeClass('btn_left_ani');
-		$('.hud').removeClass('hidden');
-		$('#finder').toggleClass('lower-finder');
+		minimizeFinder();
+		
 	});
 	
 	function hideTut() {
@@ -216,17 +211,40 @@ $(function() {
 		return false;
 	});
 	
+	function minimizeFinder() {
+		// minimize finder
+		$('#menu-overlay').removeClass('background-overlay');
+		$('#homes-filter-container').removeClass('opac');
+		$('#btn_right').removeClass('btn_right_ani');
+		$('#btn_left').removeClass('btn_left_ani');
+		$('.hud').removeClass('hidden');
+		$('#finder').addClass('lower-finder');
+	}
+	
+	function maximizeFinder() {
+		// minimize finder
+		$('#menu-overlay').addClass('background-overlay');
+		$('#homes-filter-container').addClass('opac');
+		$('#btn_right').addClass('btn_right_ani');
+		$('#btn_left').addClass('btn_left_ani');
+		$('.hud').addClass('hidden');
+		$('#finder').removeClass('lower-finder');
+	}
+	
+	$('#menu-overlay').tapstart(function(e) {
+		minimizeFinder();
+	});
+	
 ///////////////////////////	
 ///// OLD CODE BELOW //////
 ///////////////////////////
 
 	$('#btn_finder').tapstart(function(e, touch) {
-		$('#menu-overlay').toggleClass('background-overlay');
-		$('#homes-filter-container').toggleClass('opac');
-		$('#btn_right').toggleClass('btn_right_ani');
-		$('#btn_left').toggleClass('btn_left_ani');
-		$('#finder').toggleClass('lower-finder');
-		$('#wishlist-nav').addClass('hidden');
+		if ($('#finder').hasClass('lower-finder')) {
+			maximizeFinder();
+		} else {
+			minimizeFinder();
+		}
 	});
 	
 	//lot width

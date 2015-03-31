@@ -70,6 +70,9 @@ $(function() {
 	   // reset cookie
 	   //resetCookie();
 	   
+	   // close windows
+		closeFloorplan();
+	   
 	   return false;
     });
     
@@ -87,6 +90,9 @@ $(function() {
 		$('#btn_left').addClass('btn_left_ani');
 		$('#finder').removeClass('lower-finder');
 		$('#wishlist-nav').addClass('hidden');
+	   
+		// close windows
+		closeFloorplan();
 	   
 	   return false;
     });
@@ -123,6 +129,10 @@ $(function() {
 	   }
 	   //alert(wishlist.length);
 // 	   alert(wishlist);
+
+		// close windows
+		closeFloorplan();
+		
 	   return false; 
     });
     
@@ -133,6 +143,9 @@ $(function() {
 		
 		$('#shareResult').addClass('hidden');
 		$('#share-cont').removeClass('hidden'); 
+		
+		// close windows
+		closeFloorplan();
     });
     
     
@@ -142,6 +155,13 @@ $(function() {
 		return false;
 		
 	});
+	
+	// CLOSE WINDOWS FUNCTION
+	
+	function closeFloorplan() {
+		$('#overlay-floorplan-container').removeClass('show');
+		$('#floorplan-container').removeClass('toplayer');
+	}
 	
 	
 });
