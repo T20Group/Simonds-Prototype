@@ -93,9 +93,8 @@ $(function() {
 		var val = $(this).attr('data-id');
 		$.cookie('homes', val);
 		
-		$('#remove-wishlist-btn').removeClass('hidden');
-		$('#add-wishlist-btn').addClass('hidden');
-		
+		$('#remove-wishlist-btn, #finder-nav').removeClass('hidden');
+		$('#add-wishlist-btn, #main-menu-nav').addClass('hidden');
 		// update content DIV
 		$('#content').load('content_homes.html');
 	});
