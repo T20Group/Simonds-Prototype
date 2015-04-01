@@ -120,9 +120,7 @@ $(function() {
 		$('#wishlist-nav').toggleClass('hidden');
 		
 		// check current page
-		if ( ($.cookie('current_page') == 'main_menu') ||  ($.cookie('current_page') == 'tutorial_page') ){
-			$('#add-wishlist-btn, #remove-wishlist-btn').addClass('hidden');
-		} else {
+		if ($.cookie('current_page') == 'homes_page'){
 			
 			// check for duplicate fav
 			var dupe = 0;
@@ -155,6 +153,8 @@ $(function() {
 			$('.hud').removeClass('hidden');
 			$('#finder').addClass('lower-finder');
 		
+		} else {
+			$('#add-wishlist-btn, #remove-wishlist-btn').addClass('hidden');
 		}
 		
 		// $('#call-wishlist-menuX').show().fadeOut(600);
