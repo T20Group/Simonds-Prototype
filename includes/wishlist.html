@@ -111,7 +111,9 @@ $(function() {
 		$('#content').load('content_homes.html');
 	});
 
-	
+	$('#b_closeWishlist').on('tapstart', function(e) {
+		$('#wishlist-nav').addClass('hidden');
+	});
 });
 </script>
 
