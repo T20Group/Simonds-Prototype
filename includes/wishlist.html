@@ -18,6 +18,18 @@
 	}
 	.fav-homes { float: left; padding-right: 20px; padding-bottom: 20px; }
 	.fav-homes img { display: block; height: 132px; }
+	
+	#b_closeWishlist {
+	background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    display: inline-block;
+    font-size: 30px;
+    opacity: 1;
+    padding: 18px;
+    text-align: center;
+	border-top:solid 7px white;
+	border-top: 7px solid #777;
+	}
 </style>
 
 <script type="text/javascript">
@@ -112,7 +124,7 @@ $(function() {
             
             <ul id="fav-homes-list" style="max-height: 573px; overflow-x: visible;">
 	            <li class="fav-homes">
-		            Wishlist currently empty. Start collecting via Home Finder.
+		            <span style="font-size: 20pt;">Wishlist currently empty. Start collecting via Home Finder.</span>
 	            </li>
 
             </ul> <!-- /fav-homes-list -->
@@ -149,5 +161,7 @@ $(function() {
 	<a id="add-wishlist-btn" href="#" style="padding:20px 25px 25px; background:black; border:solid 4px white; color:white; width: 300px; font-size:24px; box-shadow:2px 2px 20px #000000; position:absolute; bottom:-50px; left: 40px;"><span style="padding-right:5px;" class="glyphicon">&#xE132;</span> Add to wishlist</a>
 	<a id="remove-wishlist-btn" class="hidden" href="#" style="padding:20px 25px 25px; background:black; border:solid 4px white; color:white; width: 300px; font-size:24px; box-shadow:2px 2px 20px #000000; position:absolute; bottom:-50px; left: 40px;"><span style="padding-right:5px;" class="glyphicon">&#xE132;</span> Remove from wishlist</a>
 	
+	
+	<a id="b_closeWishlist" class="close" href="#" style="position:absolute; top:0; right:0;"><span class="glyphicon">&#xE014;</span></a>
 </div>
 

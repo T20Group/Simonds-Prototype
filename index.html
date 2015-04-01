@@ -115,12 +115,12 @@ $(function() {
 		return false;
     });
     
-    $('#call-wishlist-menu').on('tapstart', function(e) {
+    $('#call-wishlist-menu, #b_closeWishlist').on('tapstart', function(e) {
 	    $('#share-nav').addClass('hidden');
 		$('#wishlist-nav').toggleClass('hidden');
 		
 		// check current page
-		if ($.cookie('current_page') == 'main_menu') {
+		if ( ($.cookie('current_page') == 'main_menu') ||  ($.cookie('current_page') == 'tutorial_page') ){
 			$('#add-wishlist-btn, #remove-wishlist-btn').addClass('hidden');
 		} else {
 			
@@ -156,6 +156,8 @@ $(function() {
 			$('#finder').addClass('lower-finder');
 		
 		}
+		
+		// $('#call-wishlist-menuX').show().fadeOut(600);
 		return false; 
     });
     
@@ -172,12 +174,14 @@ $(function() {
     });
     
     
+/*
     $('#call-wishlist-menuB').on('tapstart', function() {
 		//alert('ok');
 		$('#call-wishlist-menuX').show().fadeOut(600);
 		return false;
 		
 	});
+*/
 	
 	// CLOSE WINDOWS FUNCTION
 	
@@ -235,9 +239,9 @@ $(function() {
 <!-- 	    <a id="call-finder" href="#">FINDER</a> -->
 	    <div id="call-wishlist-menu"><span class="glyphicon-neo glyphicon">&#xE005;</span> <span class="menu-title">Wishlist</span></div>
 <!--
-	    <a id="call-wishlist-menuB" href="#" class="loveit"><span class="glyphicon">&#xE005;</span></a>
-	    <a id="call-wishlist-menuX" style="color: red; position: absolute; left: 84px; border-color: transparent; display: none; transform: scale(1.5)"><span class="glyphicon">&#xE005;</span></a>
--->
+	    <a id="call-wishlist-menuB" href="#" class="loveit"><span class="glyphicon">&#xE005;</span></a>-->
+	    <a id="call-wishlist-menuX" style="color: red; position: absolute; left: 102px; border-color: transparent; display: none; transform: scale(1.5)"><span class="glyphicon">&#xE005;</span></a>
+
         <div id="call-share-menu"><span class="glyphicon-neo glyphicon">&#x2709;</span> <span class="menu-title">Share</span></div>
 	</div> <!-- /main-control -->
 	
