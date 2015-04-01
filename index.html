@@ -202,19 +202,30 @@ $(function() {
 	- Gallery Control
 	-->
     
-    <div id="main-nav" class="">
-	    <a id="call-main-menu" href="#"><span class="glyphicon">&#xE021;</span></a>
+    <div id="main-nav">
+	    <div id="call-main-menu">
+		    	<span class="glyphicon-neo glyphicon">&#xE055;</span> 
+		    	<span class="menu-title">Menu</span>
+		    	<span class="cleared"></span>
+		</div>
+<!-- 	    <a id="call-main-menu" href="#"><span class="glyphicon">&#xE021;</span> Main Menu</a> -->
 <!-- 	    <a id="call-finder" href="#">FINDER</a> -->
-	    <a id="call-wishlist-menu" href="#"><span class="glyphicon">&#xE005;</span></a>
+	    <div id="call-wishlist-menu"><span class="glyphicon-neo glyphicon">&#xE005;</span> <span class="menu-title">Wishlist</span></div>
 <!--
 	    <a id="call-wishlist-menuB" href="#" class="loveit"><span class="glyphicon">&#xE005;</span></a>
 	    <a id="call-wishlist-menuX" style="color: red; position: absolute; left: 84px; border-color: transparent; display: none; transform: scale(1.5)"><span class="glyphicon">&#xE005;</span></a>
 -->
-        <a id="call-share-menu" href="#"><span class="glyphicon">&#x2709;</span></a>
+        <div id="call-share-menu"><span class="glyphicon-neo glyphicon">&#x2709;</span> <span class="menu-title">Share</span></div>
 	</div> <!-- /main-control -->
 	
 	<div id="main-menu-nav" class="nav" style="position: absolute; top: 700px; left: 0px;">
-    	<a style="position: absolute; left: 300px; width:500px; background-color:rgba(0,0,0,0.5); text-align:center; padding:50px; font-size:50px; color:white; border:5px solid white; box-shadow: 5px 5px 20px #000000;" href="#" id="main-menu-home-finder-btn">Home Finder</a>
+    	<a style="position: absolute; left: 300px; width:500px; background-color:rgba(0,0,0,0.5); text-align:center; padding:50px; font-size:50px; color:white; border:5px solid white; box-shadow: 5px 5px 20px #000000;" href="#" id="main-menu-home-finder-btn">
+	    	<div class="graphic" style="">
+		    	<div><span class="glyphicon" style="font-size: 170px; left: -17px; position: absolute; text-shadow: 0 4px 10px #000000; top: -12px;">&#57347;</span></div>
+		        <div class="half-circle" style="background: none repeat scroll 0 0 rgba(255, 255, 255, 0.5); border-radius: 80px 80px 0 0; height: 40px; left: 36px; position: absolute; top: 24px; transform: rotate(74deg); width: 80px;"></div>
+		    </div>
+		    Home Finder
+		</a>
         <a style="position: absolute; left: 1008px; width:500px; background-color:rgba(0,0,0,0.5); text-align:center; padding:50px; font-size:50px; color:white; border:5px solid white; box-shadow: 5px 5px 20px #000000;" href="#" id="main-menu-promo-btn">Promotions</a>
 	</div>
 	
