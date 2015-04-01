@@ -7,10 +7,11 @@ $(function(){
 	var myVideo=document.getElementById("tvc");
 	
 	$("#tvc").tapstart(function(e, touch) {
-
+		$('#main-nav').addClass('hidden');
 		if (myVideo.paused)  {
 		  myVideo.play();
 		} else { 
+		  $('#main-nav').removeClass('hidden');
 		  myVideo.pause(); 
 		};
 		
@@ -21,7 +22,7 @@ $(function(){
 	{
 		myVideo.pause();
 		$("#tvc").removeClass('full-video');
-	 
+		$('#main-nav').removeClass('hidden');
 	}, false);
 	
 });
