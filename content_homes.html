@@ -33,7 +33,7 @@ $.getJSON("homes.json", function(data) {
 	$.each(data.homes, function(name, val) {
 		if(val.id == selectedHome) { // search for id
 			$hid.text(val.id);
-			//$hname.text(val.name);
+			$hname.text(val.name);
 			$bed.text(val.floorplan[0].bed);
 			$bath.text(val.floorplan[0].bath);
 			$car.text(val.floorplan[0].car);
@@ -47,6 +47,7 @@ $.getJSON("homes.json", function(data) {
 	});	
 });
 
+/*
 $('#floorplan-container').tapstart(function(e, touch) {
 	//check if floorplan is loaded
 	if (document.getElementById('overlay-floorplan-container')) {
@@ -66,6 +67,12 @@ $('#floorplan-container').tapstart(function(e, touch) {
 	}
 	
 });
+*/
+
+	
+$('#floorplan-container').tapstart(function(e, touch) {
+	$('.iosSlider').iosSlider('nextSlide', 0);
+});
 
 $('.iosSlider').iosSlider({
 	autoSlide:false,
@@ -82,7 +89,6 @@ $('.iosSlider').iosSlider({
 	elasticFrictionCoefficient:0.8
 });
 
-$hname.text('loaded slider');
 
 $pin = $('#map-marker');
 
@@ -129,8 +135,6 @@ function addTutCount() {
 	tutCount++;
 	$.cookie('tut', tutCount);
 }
-
-$hname.text('complete');
 
 });
 </script>	
