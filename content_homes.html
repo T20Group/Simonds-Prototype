@@ -33,7 +33,7 @@ $.getJSON("homes.json", function(data) {
 	$.each(data.homes, function(name, val) {
 		if(val.id == selectedHome) { // search for id
 			$hid.text(val.id);
-			$hname.text(val.name);
+			//$hname.text(val.name);
 			$bed.text(val.floorplan[0].bed);
 			$bath.text(val.floorplan[0].bath);
 			$car.text(val.floorplan[0].car);
