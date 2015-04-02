@@ -28,8 +28,6 @@ var $target_overlay = $('#overlay');
 // place image
 $('#home-image').attr('src', 'images/homes/'+selectedHome+'.jpg');
 
-alert('loaded images');
-
 // get details
 $.getJSON("homes.json", function(data) {				
 	$.each(data.homes, function(name, val) {
@@ -68,8 +66,6 @@ $('#floorplan-container').tapstart(function(e, touch) {
 	}
 	
 });
-
-alert('loading slider');
 
 $('.iosSlider').iosSlider({
 	autoSlide:false,
