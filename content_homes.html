@@ -1,6 +1,7 @@
 <script type="text/javascript">
 $(function(){
 
+
 // set page
 $.cookie('current_page', 'homes_page');
 
@@ -26,6 +27,8 @@ var $target_overlay = $('#overlay');
 
 // place image
 $('#home-image').attr('src', 'images/homes/'+selectedHome+'.jpg');
+
+alert('loaded images');
 
 // get details
 $.getJSON("homes.json", function(data) {				
@@ -66,7 +69,7 @@ $('#floorplan-container').tapstart(function(e, touch) {
 	
 });
 
-
+alert('loading slider');
 
 $('.iosSlider').iosSlider({
 	autoSlide:false,
@@ -82,6 +85,8 @@ $('.iosSlider').iosSlider({
 	snapFrictionCoefficient:0.95,
 	elasticFrictionCoefficient:0.8
 });
+
+alert('loaded slider');
 
 $pin = $('#map-marker');
 
@@ -128,6 +133,8 @@ function addTutCount() {
 	tutCount++;
 	$.cookie('tut', tutCount);
 }
+
+alert('complete');
 
 });
 </script>	
@@ -319,7 +326,7 @@ function addTutCount() {
     </div>
 </div>
 
-<div id="home-tut">aaa</div>
+<div id="home-tut"></div>
 <script>
 $(function() {
 	var tutCount = parseInt($.cookie('tut'));
