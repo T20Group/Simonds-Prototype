@@ -129,20 +129,24 @@ $(function() {
 	
 	// binds dynamically generated .homes filter within $target to 
 	
-	$target.on('tap', '.homes', function(e) {
+	$target.on('tapstart', '.homes', function(e) {
 		
-		$('.iosSlider').iosSlider('destroy');
-		// store cookie
-		var val = $(this).attr('data-id');
-		$.cookie('homes', val);
+		if (!$(this).hasClass('selected')) {
+			$('.iosSlider').iosSlider('destroy');
+			// store cookie
+			var val = $(this).attr('data-id');
+			$.cookie('homes', val);
+			
+			// update content DIV
+			$content.load('content_homes.html');
+			
+			
+			// SELECTED
+			$('.homes').removeClass('selected');
+			$(this).addClass('selected');
+		}
 		
-		// update content DIV
-		$content.load('content_homes.html');
 		
-		
-		// SELECTED
-		$('.homes').removeClass('selected');
-		$(this).addClass('selected');
 		
 		minimizeFinder();
 		
