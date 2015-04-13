@@ -32,7 +32,7 @@ function slideLoad(args) {
 	//$('.slider .item:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
 }
 
-$('.b_promo_slider').tap(function() {
+$('.b_promo_slider').click(function() {
 	$.cookie('promos', $(this).data('promo'));
 	$('#main-menu-promo-btn').trigger('tapstart');
 });
