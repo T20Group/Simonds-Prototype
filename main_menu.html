@@ -49,10 +49,9 @@ $('.b_promo_slider').tapstart(function(e) {
 $('.b_promo_slider').tapend(function(e) {
 
 	last_touch = e.pageX;
-	console.log( Math.abs(first_touch - last_touch) );
 
 
-	var diff =  Math.abs(first_touch - last_touch);
+	var diff =  Math.abs( parseInt(first_touch) - parseInt(last_touch) );
 	alert(diff);
 	if (diff <= tap_offset) {
 		$('#main-menu-promo-btn').trigger('tapstart');
