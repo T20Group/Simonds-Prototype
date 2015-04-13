@@ -53,8 +53,8 @@ $('.b_promo_slider').tapend(function(e) {
 
 
 	var diff =  Math.abs(first_touch - last_touch);
+	alert(diff);
 	if (diff <= tap_offset) {
-		
 		$('#main-menu-promo-btn').trigger('tapstart');
 	}
 });
