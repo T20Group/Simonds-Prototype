@@ -32,7 +32,12 @@ function slideLoad(args) {
 	//$('.slider .item:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
 }
 
-$('.b_promo_slider').click(function() {
+$('.b_promo_slider').tap(function() {
+	$.cookie('promos', $(this).data('promo'));
+	$('#main-menu-promo-btn').trigger('tapstart');
+});
+
+$('.cta-btn').tapstart(function() {
 	$.cookie('promos', $(this).data('promo'));
 	$('#main-menu-promo-btn').trigger('tapstart');
 });
@@ -188,7 +193,7 @@ body {
                             <div style="color: #dd0630; font-size: 7px; font-weight: bold; position: absolute; right: 42px; text-align: center; top: 285px; width: 305px;">With First Home Grant</div>
                             <div style="color: #dd0630; font-size: 60px; font-weight: bold; position: absolute; right: 107px; text-align: center; top: 342px; width: 305px;">$109,500</div>-->
                              <iframe seamless="seamless" height="450" scrolling="no" marginheight="0" marginwidth="0" width="1000" src="http://davelive.com.au/staging/simonds-prototype/promo-iframe/index.php"></iframe> 
-                            <div class="cta-btn" data-promo="2">Read more</div>
+                            <div class="cta-btn" data-promo="1">Read more</div>
                         	<div class="overlay"></div>
                     	</a>
                     </div>
