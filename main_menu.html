@@ -10,6 +10,8 @@ $('.iosSlider').iosSlider({
 	infiniteSlider: true,
 	snapSlideCenter: true,
 	onSlideChange: slideChange,
+	onSlideStart: slideStart,
+	onSlideComplete: slideComplete,
 	onSliderLoaded:slideLoad,
 	autoSlide: false,
 	autoSlideTimer:5000,
@@ -18,6 +20,15 @@ $('.iosSlider').iosSlider({
 	//slideStartVelocityThreshold:5
 });
 	
+function slideStart(args) {
+	// unbind clicks
+	$('.b_promo_slider').unbind('tapstart');
+}
+
+function slideComplete(args) {
+	// unbind clicks
+	$('.b_promo_slider').bind('tapstart');
+}
 
 function slideChange(args) {
 						
@@ -32,7 +43,7 @@ function slideLoad(args) {
 	//$('.slider .item:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
 }
 
-$('.b_promo_slider').tapend(function() {
+$('.b_promo_slider').tapstart(function() {
 	$.cookie('promos', $(this).data('promo'));
 	$('#main-menu-promo-btn').trigger('tapstart');
 });
