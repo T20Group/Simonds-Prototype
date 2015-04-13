@@ -43,12 +43,12 @@ var last_touch = 0;
 var tap_offset = 50;
 $('.b_promo_slider').tapstart(function(e) {
 	$.cookie('promos', $(this).data('promo'));
-	first_touch = e.pageX;
+	first_touch = e.screenX;
 });
 
 $('.b_promo_slider').tapend(function(e) {
 
-	last_touch = e.pageX;
+	last_touch = e.screenX;
 
 
 	var diff =  Math.abs( parseInt(first_touch) - parseInt(last_touch) );
