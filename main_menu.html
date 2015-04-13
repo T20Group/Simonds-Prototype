@@ -22,12 +22,12 @@ $('.iosSlider').iosSlider({
 	
 function slideStart(args) {
 	// unbind clicks
-	$('.b_promo_slider').unbind('tapstart');
+	$('.b_promo_slider').addClass('sliding');
 }
 
 function slideComplete(args) {
 	// unbind clicks
-	$('.b_promo_slider').bind('tapstart');
+	$('.b_promo_slider').removeClass('sliding');
 }
 
 function slideChange(args) {
@@ -43,9 +43,12 @@ function slideLoad(args) {
 	//$('.slider .item:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
 }
 
-$('.b_promo_slider').tapstart(function() {
-	$.cookie('promos', $(this).data('promo'));
-	$('#main-menu-promo-btn').trigger('tapstart');
+$('.b_promo_slider').tap(function() {
+	if(!$(this).hasClass('sliding')) {
+		$.cookie('promos', $(this).data('promo'));
+		$('#main-menu-promo-btn').trigger('tapstart');	
+	}
+	
 });
 
 /*
