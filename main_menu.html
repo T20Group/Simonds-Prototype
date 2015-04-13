@@ -13,7 +13,7 @@ $('.iosSlider').iosSlider({
 	onSliderLoaded:slideLoad,
 	autoSlide: false,
 	autoSlideTimer:5000,
-	autoSlideTransTimer:1200,
+	autoSlideTransTimer:1200
 //	horizontalSlideLockThreshold:5,
 //	slideStartVelocityThreshold:10
 });
@@ -41,7 +41,6 @@ function slideLoad(args) {
 var first_touch = 0;
 var last_touch = 0;
 var tap_offset = 50;
-/*
 $('.b_promo_slider').tapstart(function(e) {
 	$.cookie('promos', $(this).data('promo'));
 	first_touch = e.screenX;
@@ -58,12 +57,13 @@ $('.b_promo_slider').tapend(function(e) {
 		$('#main-menu-promo-btn').trigger('tapstart');
 	}
 });
-*/
 
+/*
 $('.b_promo_slider').click(function() {
 	$.cookie('promos', $(this).data('promo'));
 	$('#main-menu-promo-btn').trigger('tapstart');
 });
+*/
 	
 });
 </script>	
