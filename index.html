@@ -105,9 +105,9 @@ $(function() {
     });
     
     $('#main-menu-promo-btn').on('tapstart', function(e){
-		
 		$.cookie('current_page', 'promo_page');
 		
+		$('.iosSlider').iosSlider('lock');
 		$('.iosSlider').iosSlider('destroy');
 		$content.load('content_promos.html');
 		$('.nav').addClass('hidden');
